@@ -14,7 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Register our middlewares
+        $middleware->alias([
+            'Auth.panel' => \App\Http\Middleware\PanelAuth::class,
+            'Auth.users' => \App\Http\Middleware\UsersAuth::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
