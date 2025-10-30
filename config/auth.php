@@ -36,9 +36,13 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
+        'web' => [ // Public guard globaly accessed by all people
+            'driver' => 'session', 
             'provider' => 'users',
+        ],
+        'panel' => [ // Control panel guard only accessed by admin users
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
     ],
 
@@ -61,6 +65,11 @@ return [
 
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        
+        'admins' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
