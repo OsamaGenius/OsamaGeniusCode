@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('bio')->nullable();
+            $table->string('image')->default('');
+            $table->json('social_links');
+            $table->enum('status', ['Active', 'Not active']);
+            $table->enum('group_id', ['Admins', 'users', 'Normal_users']);
+            $table->enum('approvent', ['Yes', 'No']);
             $table->rememberToken();
             $table->timestamps();
         });
