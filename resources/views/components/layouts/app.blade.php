@@ -20,14 +20,18 @@
     <body>
 
         {{-- Top Header --}}
-        <header class="header fade-section">
+        @if (Route::currentRouteName() === 'homepage')
+            <header class="header fade-sections">
+        @else
+            <header class="small-header fade-sections">
+        @endif
 
             {{-- Header Links --}}
             <nav class="navbar navbar-expand-lg navbar-dark">
 
                 <div class="container">
                     {{-- Website Brand --}}
-                    <a class="navbar-brand">OsamaGenius</a>
+                    <h1 class="navbar-brand">OsamaGenius</h1>
         
                     {{-- Responsive Button --}}
                     <button
@@ -39,19 +43,46 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
         
+                    @php
+                        $links = [
+                            'Home'       => 'homepage',
+                            'About'      => 'about',
+                            'My Works'   => 'works',
+                            'Contact Me' => 'contact',
+                        ];
+                    @endphp
+
                     {{-- Responsive Links --}}
                     <div id="OsamaGeniusLinks" class="collapse navbar-collapse">
 
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a href="index.html" class="nav-link active">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="about.html" class="nav-link">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="works.html" class="nav-link">My Works</a>
-                            </li>
+                            @foreach ($links as $name => $route)
+                                <li class="nav-item">
+                                    <a href="{{route($route)}}" class="nav-link @if(Route::currentRouteName() === $route) active @endif">{{$name}}</a>
+                                </li>
+                            @endforeach
+                            {{-- @guest --}}
+                                <li class="nav-item">
+                                    <a 
+                                        href="works.html" 
+                                        class="nav-link"
+                                    >
+                                        Login
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a 
+                                        href="works.html" 
+                                        class="nav-link"
+                                    >
+                                        Register
+                                    </a>
+                                </li>
+                            {{-- @else --}}
+                                <li class="nav-item">
+                                    <a href="works.html" class="nav-link">Account</a>
+                                </li>
+                            {{-- @endguest --}}
                         </ul>
 
                     </div>
@@ -61,9 +92,10 @@
             </nav>
     
             {{-- Header Caption --}}
-            <div class="caption">
+            <div class="container position-relative">
 
-                <div class="container">
+                <div class="caption position-absolute">
+    
                     <h1 class="text-light">Osama Abdelrahman</h1>
                     <h2 class="text-light">Web Developer & Graphic Designer</h2>
                     
@@ -71,17 +103,21 @@
                         <button class="btn btn-outline-light btn-lg s-200 me-3">About Me</button>
                         <button class="btn btn-outline-light btn-lg s-200">My Works</button>
                     </div>
-
+    
                 </div>
 
             </div>
-
+            
         </header>
-      
-        {{ $slot }}
+
+        <main class="my-0 py-0">
+
+            {{ $slot }}
+
+        </main>
         
         {{-- Footer  --}}
-        <footer class="footer bg-white shadow-sm py-5 fade-section">
+        <footer class="footer bg-white shadow-sm py-5 fade-sections">
 
             <div class="container">
 
