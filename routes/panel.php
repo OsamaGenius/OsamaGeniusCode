@@ -1,7 +1,20 @@
 <?php
 
+use App\Http\Middleware\PanelAuth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin', function () {
-    echo 'Welcome to control panel dear admin user';
+Route::prefix('/admin')->group(function () {
+    
+    Route::get('/', function() {
+        return view('panel.index');
+    })->name('panel.login');
+    
+    // Route::middleware(PanelAuth::class)->group(function () {
+        
+        Route::get('/socials', function() {
+            return view('panel.social.index');
+        })->name('panel.socials');
+
+    // });
+
 });
