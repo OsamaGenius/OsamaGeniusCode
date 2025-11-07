@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->text('bio')->nullable();
             $table->string('image')->default('');
-            $table->json('social_links');
+            $table->json('social_links')->nullable();
             $table->enum('status', ['Active', 'Not active']);
             $table->enum('group_id', ['Admins', 'users', 'Normal_users']);
             $table->enum('approvent', ['Yes', 'No']);

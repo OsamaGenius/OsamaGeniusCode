@@ -101,4 +101,14 @@ class User extends Authenticatable
         return $this->hasMany(Testimonial::class, 'user_id', 'id');
     }
 
+    /**
+     * Get all of the socials for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function socials(): HasMany
+    {
+        return $this->hasMany(Social::class, 'user_id', 'id');
+    }
+
 }
