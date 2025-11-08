@@ -26,7 +26,7 @@
 <div class="table-responsive shadow-md rounded-3 mb-3">
     <table class="table align-middle">
         <thead class="table-light">
-            <caption class="text-center pt-3 mb-0 pb-0">{{ __('Social Links') }}</caption>
+            <caption class="text-center pt-3 mb-0 pb-0">{{ $title }}</caption>
             <tr class="text-center">
                 {{$thead}}
             </tr>
