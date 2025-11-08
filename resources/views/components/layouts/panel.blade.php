@@ -115,7 +115,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 g-2">
                     <div class="col text-center text-md-start">All rights reseaved <a href="{{route('homepage')}}" target="_blank">@OsamaGenius</a></div>
-                    <div class="col text-center text-md-end">{{ date('Y') === '2024' ? date('Y') : '2024 - ' . date('Y') }}</div>
+                    <div class="col text-center text-md-end">{{ date('Y') === '2025' ? date('Y') : '2024 - ' . date('Y') }}</div>
                 </div>
             </div>
         </footer>
