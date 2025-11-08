@@ -64,13 +64,11 @@
         <form wire:submit.prevent='save'>
             {{-- Socail link name --}}
             <x-forms.input>
-                <x-slot:type>{{ 'text' }}</x-slot:type>
                 <x-slot:for>{{ 'name' }}</x-slot:for>
                 <x-slot:placeholder>{{ 'Ex: Facebook' }}</x-slot:placeholder>
             </x-forms.input>
             {{-- Socail link URL --}}
             <x-forms.input>
-                <x-slot:type>{{ 'text' }}</x-slot:type>
                 <x-slot:for>{{ 'url' }}</x-slot:for>
                 <x-slot:placeholder>{{ 'Ex: Https:www.facebook.com/user_name' }}</x-slot:placeholder>
             </x-forms.input>
@@ -102,7 +100,6 @@
             </x-forms.input>
             {{-- Socail link name --}}
             <x-forms.input>
-                <x-slot:type>{{ 'text' }}</x-slot:type>
                 <x-slot:for>{{ 'name' }}</x-slot:for>
                 <x-slot:placeholder>{{ 'Ex: Facebook' }}</x-slot:placeholder>
             </x-forms.input>
@@ -114,7 +111,6 @@
             </x-forms.input>
             {{-- Social Link Status --}}
             <x-forms.radio>
-                <x-slot:for>{{ 'status' }}</x-slot:for>
                 <x-slot:title>{{ __('Scoial Link Status') }}</x-slot:title>
                 <x-slot:values>{{ 'Active,Disables' }}</x-slot:values>
             </x-forms.radio>
