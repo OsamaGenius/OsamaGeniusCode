@@ -21,17 +21,14 @@
                 @foreach ($skills as $i => $skill)
                     <tr>
                         <td scope="row">{{ $i += 1 }}</td>
-                        <td><img class="s-50" src="{{ asset('imgs/social/' . $skill->name . '.png') }}"
-                                alt="{{ $skill->name }}"></td>
                         <td>{{ $skill->name }}</td>
-                        <td><a href="{{ $skill->url }}" target="_blank"
-                                rel="noopener noreferrer">{{ $skill->url }}</a></td>
-                        <td>{{ $skill->status }}</td>
+                        <td>{{ $skill->percentage }}</td>
+                        <td>{{ $skill->level }}</td>
                         <td>{{ $skill->created_at->diffForHumans() }}</td>
                         <td>{{ $skill->updated_at->diffForHumans() }}</td>
                         <td>
                             <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#social-edit-modal"
+                                data-bs-target="#skills-edit-modal"
                                 wire:click.prevent="setSocialID({{ $skill->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
@@ -54,11 +51,13 @@
         </x-slot:tbody>
     </x-tables.search>
 
+    {{ $skills->links() }}
+
     {{-- Import Adding Modal --}}
     <x-modal.def>
         <x-slot:id>{{ 'skills-add-modal' }}</x-slot:id>
         <x-slot:title>{{ __('Adding new skills') }}</x-slot:title>
-        <form>
+        <form wire:submit.prevent="save">
             {{-- Skill Name --}}
             <x-forms.input>
                 <x-slot:for>{{ 'name' }}</x-slot:for>
@@ -89,7 +88,7 @@
     <x-modal.def>
         <x-slot:id>{{ 'skills-edit-modal' }}</x-slot:id>
         <x-slot:title>{{ __('Updating old skills') }}</x-slot:title>
-        <form>
+        <form wire:submit.prevent="update">
             {{-- Skill ID --}}
             <x-forms.input>
                 <x-slot:type>{{ 'text' }}</x-slot:type>

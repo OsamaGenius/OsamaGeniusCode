@@ -22,6 +22,7 @@ class Skill extends Model
         'name',
         'percentage',
         'level',
+        'user_id',
     ];
     
     /**
