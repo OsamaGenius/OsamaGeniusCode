@@ -23,7 +23,7 @@
 
     <div class="wrapper">
 
-        <div class="contant-wrapper">
+        <div class="contant-wrapper h-full">
 
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
@@ -105,11 +105,20 @@
 
             </nav>
 
-
-            {{ $slot }}
-
+            <div class="position-relative">
+                {{ $slot }}
+            </div>
 
         </div>
+
+        <footer class="bg-white py-3">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <div class="col text-center text-md-start">All rights reseaved <a href="{{route('homepage')}}" target="_blank">@OsamaGenius</a></div>
+                    <div class="col text-center text-md-end">{{ date('Y') === '2024' ? date('Y') : '2024 - ' . date('Y') }}</div>
+                </div>
+            </div>
+        </footer>
 
     </div>
 
