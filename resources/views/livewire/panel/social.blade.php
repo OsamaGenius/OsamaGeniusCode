@@ -111,6 +111,7 @@
             </x-forms.input>
             {{-- Social Link Status --}}
             <x-forms.radio>
+                <x-slot:for>{{ 'status' }}</x-slot:for>
                 <x-slot:title>{{ __('Scoial Link Status') }}</x-slot:title>
                 <x-slot:values>{{ 'Active,Disables' }}</x-slot:values>
             </x-forms.radio>
