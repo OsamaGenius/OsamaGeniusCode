@@ -93,8 +93,8 @@
             {{-- Skill ID --}}
             <x-forms.input>
                 <x-slot:type>{{ 'text' }}</x-slot:type>
-                <x-slot:for>{{ 'name' }}</x-slot:for>
-                <x-slot:placeholder>{{ 'Ex: PHP | Laravel | HTML' }}</x-slot:placeholder>
+                <x-slot:for>{{ 'id' }}</x-slot:for>
+                <x-slot:placeholder>{{ '' }}</x-slot:placeholder>
             </x-forms.input>
             {{-- Skill Name --}}
             <x-forms.input>
