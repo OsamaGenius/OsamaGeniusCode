@@ -43,6 +43,16 @@ class Skills extends Component
     {
         $this->reset(['search', 'id', 'name', 'percentage', 'level']);
     }
+    
+    /**
+     * =======================================
+     * == Init skill id to update it's data ==
+     * =======================================
+     * */
+    public function setSocialID($id)
+    {
+        # code...
+    }
 
     /**
      * ========================
@@ -85,6 +95,36 @@ class Skills extends Component
         // Reset form feilds
         $this->resetInputs();
 
+    }
+
+    /**
+     * ==========================================
+     * == Update old skills data from database ==
+     * ==========================================
+     * */
+    public function update()
+    {
+        # code...
+    }
+
+    /**
+     * ================================
+     * == Cancel update skills data  ==
+     * ================================
+     * */
+    public function cancel()
+    {
+        # code...
+    }
+
+    /**
+     * ==================================
+     * == Deleting skills data from DB ==
+     * ==================================
+     * */
+    public function delete()
+    {
+        # code...
     }
 
     public function render()
