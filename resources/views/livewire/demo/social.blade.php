@@ -1,47 +1,23 @@
-<section class="social-links py-4 shadow-sm text-center fade-sectionw">
-    <div class="container">
-        <div class="row row-cols-6 g-0">
-            <!-- Facebook Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/facebook.png')}}" alt="Facebook" />
-                </a>
+<div>
+    @if (count($links) > 0)
+        <section class="social-links py-4 shadow-sm text-center fade-sectionw">
+            <div class="container">
+
+                <div class="row row-cols-6 g-0">
+
+                    @foreach ($links as $link)
+                        <div class="col">
+                            <a href="{{$link->url}}">
+                                <img class="" src="{{ asset('imgs/social/'.$link->name . '.png') }}" alt="{{$link->name}}" />
+                            </a>
+                        </div>
+                    @endforeach
+
+                </div>
+
             </div>
 
-            <!-- Linkedin Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/Linkedin.png')}}" alt="Facebook" />
-                </a>
-            </div>
+        </section>
+    @endif
 
-            <!-- Twitter Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/twitter.png')}}" alt="Facebook" />
-                </a>
-            </div>
-
-            <!-- Gmail Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/gmail.png')}}" alt="Facebook" />
-                </a>
-            </div>
-
-            <!-- Youtube Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/youtube.png')}}" alt="Facebook" />
-                </a>
-            </div>
-
-            <!-- Whatsapp Link -->
-            <div class="col">
-                <a href="#">
-                    <img class="" src="{{asset('imgs/social/whatsapp.png')}}" alt="Facebook" />
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+</div>

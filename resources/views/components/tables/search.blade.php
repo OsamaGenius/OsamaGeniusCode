@@ -11,7 +11,7 @@
     }" class="col text-end">
 
         <div class="d-flex flex-row-reverse text-end">
-            <input type="search" x-cloak x-show="show===true" x-transition wire:model.live.debounce.300='search'
+            <input type="search" x-cloak x-show="show===true" x-transition wire:model.live.throttle.300ms='search'
                 class="form-control me-2 order-2" placeholder="Search links by their names">
             <a href="#" class="text-dark mt-2 order-1" x-transition x-on:click.prevent="show = !show">
                 <i class="fas fa-search"></i>
