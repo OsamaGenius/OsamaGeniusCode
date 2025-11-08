@@ -33,6 +33,20 @@ textarea {
     box-shadow: 0px 0 15px -2px #2b2f323a;
 }
 
+.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.z-index-top {
+    z-index: 99999;
+}
+
+.h-full {
+    height: 100vh;
+    height: 100dvh;
+}
+
 .s-50 {
     width: 50px;
 }
