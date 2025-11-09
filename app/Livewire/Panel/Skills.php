@@ -158,7 +158,18 @@ class Skills extends Component
     public function render()
     {
 
-        $skills = Skill::paginate(5);
+        if($this->search !== '') {
+            
+            $skills = Skill::where('name', 'like', '%' . $this->search . '%')
+                            ->orWhere('percentage', 'like', '%' . $this->search . '%')
+                            ->orWhere('level', 'like', '%' . $this->search . '%')
+                            ->paginate(5);
+
+        } else {
+
+            $skills = Skill::paginate(5);
+
+        }
 
         return view(
             'livewire.panel.skills',

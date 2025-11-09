@@ -174,10 +174,14 @@ class Social extends Component
 
     public function render()
     {
-        if(strlen($this->search) > 2) {
+        if($this->search !== '') {
+
             $links = ModelsSocial::where('name', 'like', '%'.$this->search.'%')->paginate(4);
+
         } else {
+
             $links = ModelsSocial::paginate(4);
+            
         }
 
         return view(
