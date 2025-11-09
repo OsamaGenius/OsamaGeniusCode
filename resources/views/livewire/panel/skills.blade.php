@@ -23,8 +23,37 @@
                     <tr>
                         <td scope="row">{{ $i += 1 }}</td>
                         <td>{{ $skill->name }}</td>
-                        <td>{{ $skill->percentage }}</td>
-                        <td>{{ $skill->level }}</td>
+                        <td>
+                            <div class="skills">
+                                <div class="position-relative">
+                                    <label class="progress-label">{{$skill->percentage}}</label>
+                                    <div class="progress mb-3">
+                                        <div 
+                                            class="progress-bar"
+                                            role="progressbar" 
+                                            aria-valuenow="{{$skill->percentage}}" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100"
+                                        >
+                                            <span class="pe-1 text-end">{{$skill->percentage}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span
+                                class="px-3 py-2 rounded-4 shadow {{
+                                    $skill->level === 'Expert' 
+                                    ? 
+                                    'text-bg-danger' 
+                                    : 
+                                    ($skill->level === 'Intermediate' ? 'text-bg-success' : 'text-bg-warning')
+                                }}"
+                            >
+                                {{ $skill->level }}
+                            </span>
+                        </td>
                         <td>{{ $skill->type }}</td>
                         <td>{{ $skill->created_at->diffForHumans() }}</td>
                         <td>{{ $skill->updated_at->diffForHumans() }}</td>
