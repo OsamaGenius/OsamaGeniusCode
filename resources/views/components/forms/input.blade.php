@@ -3,7 +3,7 @@
         type="{{$type ?? 'text'}}" 
         class="form-control" 
         min="0"
-        wire:model.defer="{{$for}}" 
+        wire:model.{{$modifier ?? 'defer'}}="{{$for}}" 
         placeholder="{{$placeholder}}"
     >
     <label for="{{$for}}">{{$placeholder}}</label>
