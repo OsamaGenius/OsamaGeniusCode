@@ -12,6 +12,7 @@
             <th>{{ __('Name') }}</th>
             <th>{{ __('Percentage') }}</th>
             <th>{{ __('Level') }}</th>
+            <th>{{ __('Type') }}</th>
             <th>{{ __('Added') }}</th>
             <th>{{ __('Updated') }}</th>
             <th>{{ __('Action') }}</th>
@@ -24,6 +25,7 @@
                         <td>{{ $skill->name }}</td>
                         <td>{{ $skill->percentage }}</td>
                         <td>{{ $skill->level }}</td>
+                        <td>{{ $skill->type }}</td>
                         <td>{{ $skill->created_at->diffForHumans() }}</td>
                         <td>{{ $skill->updated_at->diffForHumans() }}</td>
                         <td>
@@ -75,6 +77,12 @@
                 <x-slot:title>{{ __('Skill Level') }}</x-slot:title>
                 <x-slot:values>{{ 'Beginner,Intermediate,Expert' }}</x-slot:values>
             </x-forms.radio>
+            {{-- Skills Type --}}
+            <x-forms.radio>
+                <x-slot:for>{{ 'type' }}</x-slot:for>
+                <x-slot:title>{{ __('Skill Type') }}</x-slot:title>
+                <x-slot:values>{{ 'Frontend,Backend' }}</x-slot:values>
+            </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">
                 <button type="submit" class="btn btn-outline-primary s-100">
@@ -111,6 +119,12 @@
                 <x-slot:for>{{ 'level' }}</x-slot:for>
                 <x-slot:title>{{ __('Skill Level') }}</x-slot:title>
                 <x-slot:values>{{ 'Beginner,Intermediate,Expert' }}</x-slot:values>
+            </x-forms.radio>
+            {{-- Skills Type --}}
+            <x-forms.radio>
+                <x-slot:for>{{ 'type' }}</x-slot:for>
+                <x-slot:title>{{ __('Skill Type') }}</x-slot:title>
+                <x-slot:values>{{ 'Frontend,Backend' }}</x-slot:values>
             </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">

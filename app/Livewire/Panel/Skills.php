@@ -28,10 +28,13 @@ class Skills extends Component
 
     public $level = 'Intermediate';
 
+    public $type = 'Frontend';
+
     protected $rules = [
-        'name' => ['required', 'string', 'max:225', 'unique:'.Skill::class],
         'percentage' => ['required', 'integer'],
-        'level' => ['required', 'string', 'max:255']
+        'type' => ['required', 'string', 'max:255'],
+        'level' => ['required', 'string', 'max:255'],
+        'name' => ['required', 'string', 'max:225', 'unique:'.Skill::class],
     ];
     
     /**
@@ -41,7 +44,7 @@ class Skills extends Component
      * */
     public function resetInputs()
     {
-        $this->reset(['search', 'skill_id', 'name', 'percentage', 'level']);
+        $this->reset(['search', 'skill_id', 'name', 'percentage', 'level', 'type']);
         $this->setErrorBag(['']);
     }
     
@@ -87,6 +90,7 @@ class Skills extends Component
 
         // Save data after passed validation to database
         Skill::create([
+            'type' => $validation['type'],
             'name' => $validation['name'],
             'level' => $validation['level'],
             'percentage' => $validation['percentage'],
@@ -112,9 +116,15 @@ class Skills extends Component
         if( $this->skill_id === '' ) {
             $this->dispatchingMsgs('Unable to delete please select the target record', 'error');
         } else {
-            $validation = $this->validate();
+            $validation = $this->validate([
+                'name' => ['required', 'string', 'max:255', 'unique:skills,name,' . $this->skill_id],
+                'percentage' => ['required', 'integer'],
+                'type' => ['required', 'string', 'max:255'],
+                'level' => ['required', 'string', 'max:255'],
+            ]);
 
             Skill::where('id', $this->skill_id)->update([
+                'type' => $validation['type'],
                 'name' => $validation['name'],
                 'level' => $validation['level'],
                 'percentage' => $validation['percentage'],
