@@ -11,13 +11,25 @@ Route::prefix('/admin')->group(function () {
     
     // Route::middleware(PanelAuth::class)->group(function () {
         
-        Route::get('/socials', function() {
-            return view('panel.social.index');
-        })->name('panel.socials');
+        Route::get('/dashboard', function() {
+            return view('panel.dashboard.index');
+        })->name('dashboard');
+        
+        Route::get('/about', function() {
+            return view('panel.about.index');
+        })->name('panel.about');
+        
+        Route::get('/works', function() {
+            return view('panel.works.index');
+        })->name('panel.works');
         
         Route::get('/skills', function() {
             return view('panel.skills.index');
         })->name('panel.skills');
+        
+        Route::get('/socials', function() {
+            return view('panel.social.index');
+        })->name('panel.socials');
 
     // });
 

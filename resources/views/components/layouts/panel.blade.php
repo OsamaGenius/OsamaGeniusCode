@@ -46,26 +46,27 @@
                 
                     <div class="collapse navbar-collapse" id="collapsibleNavId">
 
+                        @php
+                            $links = [
+                                ['name' => 'Dashboard',     'route' => 'dashboard'],
+                                ['name' => 'About',         'route' => 'panel.about'],
+                                ['name' => 'Works',         'route' => 'panel.works'],
+                                ['name' => 'Skills',        'route' => 'panel.skills'],
+                                ['name' => 'Social Links',  'route' => 'panel.socials'],
+                            ];
+                        @endphp
+
                         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#" aria-current="page">Dashboard<span
-                                        class="visually-hidden">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Social Links</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Journey</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Works</a>
-                            </li>
+                            @foreach ($links as $link)
+                                <li class="nav-item">
+                                    <a 
+                                        class="nav-link @if(Route::currentRouteName() === $link['route']) active @endif" 
+                                        href="{{route($link['route'])}}"
+                                    >
+                                        {{$link['name']}}
+                                    </a>
+                                </li>
+                            @endforeach
                             {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Experiences & Education</a>
