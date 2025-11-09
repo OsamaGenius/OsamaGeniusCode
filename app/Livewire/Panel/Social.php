@@ -141,6 +141,8 @@ class Social extends Component
         $this->dispatch('modal:close');
 
         $this->dispatchingMsgs('Successfully deleted selected record');
+
+        $this->resetInputs();
     }
 
     /**
