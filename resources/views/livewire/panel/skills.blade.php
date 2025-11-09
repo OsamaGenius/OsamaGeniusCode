@@ -69,6 +69,7 @@
             <x-forms.input>
                 <x-slot:type>{{ 'number' }}</x-slot:type>
                 <x-slot:for>{{ 'percentage' }}</x-slot:for>
+                <x-slot:modifier>{{ 'live' }}</x-slot:modifier>
                 <x-slot:placeholder>{{ '50 <-> 100 [Only numbers]' }}</x-slot:placeholder>
             </x-forms.input>
             {{-- Skills Level --}}
@@ -112,6 +113,7 @@
             <x-forms.input>
                 <x-slot:type>{{ 'number' }}</x-slot:type>
                 <x-slot:for>{{ 'percentage' }}</x-slot:for>
+                <x-slot:modifier>{{ 'live' }}</x-slot:modifier>
                 <x-slot:placeholder>{{ '50 <-> 100 [Only numbers]' }}</x-slot:placeholder>
             </x-forms.input>
             {{-- Skills Level --}}

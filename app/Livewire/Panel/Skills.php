@@ -168,6 +168,25 @@ class Skills extends Component
     public function render()
     {
 
+        if($this->percentage !== '') {
+            switch ($this->percentage) {
+                case  $this->percentage < 55:
+                    $this->level = 'Beginner';
+                    break;
+                case  $this->percentage < 85:
+                    $this->level = 'Intermediate';
+                    break;
+                case  $this->percentage <= 100:
+                    $this->level = 'Expert';
+                    break;
+                default:
+                    $this->level = 'Intermediate';
+                    break;
+            }
+        } else {
+            $this->level = 'Intermediate';
+        }
+
         if($this->search !== '') {
             
             $skills = Skill::where('name', 'like', '%' . $this->search . '%')
