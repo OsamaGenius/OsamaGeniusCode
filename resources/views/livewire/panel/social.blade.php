@@ -76,7 +76,7 @@
             <x-forms.radio>
                 <x-slot:for>{{ 'status' }}</x-slot:for>
                 <x-slot:title>{{ __('Scoial Link Status') }}</x-slot:title>
-                <x-slot:values>{{ 'Active,Disables' }}</x-slot:values>
+                <x-slot:values>{{ 'Active,Disabled' }}</x-slot:values>
             </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">
@@ -113,7 +113,7 @@
             <x-forms.radio>
                 <x-slot:for>{{ 'status' }}</x-slot:for>
                 <x-slot:title>{{ __('Scoial Link Status') }}</x-slot:title>
-                <x-slot:values>{{ 'Active,Disables' }}</x-slot:values>
+                <x-slot:values>{{ 'Active,Disabled' }}</x-slot:values>
             </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">
