@@ -20,7 +20,7 @@ class Skills extends Component
      * */
     public $search = '';
 
-    public $id = '';
+    public $skill_id = '';
 
     public $name = '';
 
@@ -41,7 +41,7 @@ class Skills extends Component
      * */
     public function resetInputs()
     {
-        $this->reset(['search', 'id', 'name', 'percentage', 'level']);
+        $this->reset(['search', 'skill_id', 'name', 'percentage', 'level']);
     }
     
     /**
@@ -51,7 +51,11 @@ class Skills extends Component
      * */
     public function setSocialID($id)
     {
-        # code...
+        $this->skill_id = $id;
+        $skill = Skill::where('id', $this->skill_id)->get(['name', 'percentage', 'level']);
+        $this->name = $skill[0]->name;
+        $this->level = $skill[0]->level;
+        $this->percentage = $skill[0]->percentage;
     }
 
     /**
@@ -104,7 +108,23 @@ class Skills extends Component
      * */
     public function update()
     {
-        # code...
+        if( $this->skill_id === '' ) {
+            $this->dispatchingMsgs('Unable to delete please select the target record', 'error');
+        } else {
+            $validation = $this->validate();
+
+            Skill::where('id', $this->skill_id)->update([
+                'name' => $validation['name'],
+                'level' => $validation['level'],
+                'percentage' => $validation['percentage'],
+            ]);
+
+            $this->resetInputs();
+
+            $this->dispatchingMsgs('Successfully update skill data');
+
+            $this->dispatch('modal:close');
+        }
     }
 
     /**
@@ -114,7 +134,8 @@ class Skills extends Component
      * */
     public function cancel()
     {
-        # code...
+        $this->resetInputs();
+        $this->dispatch('modal:close');
     }
 
     /**
@@ -124,7 +145,13 @@ class Skills extends Component
      * */
     public function delete()
     {
-        # code...
+        Skill::findOrFail($this->skill_id)->delete();
+
+        $this->dispatch('modal:close');
+
+        $this->dispatchingMsgs('Successfully deleted selected record');
+
+        $this->resetInputs();
     }
 
     public function render()
