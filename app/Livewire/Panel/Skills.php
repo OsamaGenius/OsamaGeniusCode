@@ -42,6 +42,7 @@ class Skills extends Component
     public function resetInputs()
     {
         $this->reset(['search', 'skill_id', 'name', 'percentage', 'level']);
+        $this->setErrorBag(['']);
     }
     
     /**

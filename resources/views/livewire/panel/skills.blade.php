@@ -91,7 +91,7 @@
         <form wire:submit.prevent="update">
             {{-- Skill ID --}}
             <x-forms.input>
-                <x-slot:type>{{ 'text' }}</x-slot:type>
+                <x-slot:type>{{ 'hidden' }}</x-slot:type>
                 <x-slot:for>{{ 'skill_id' }}</x-slot:for>
                 <x-slot:placeholder>{{ '' }}</x-slot:placeholder>
             </x-forms.input>

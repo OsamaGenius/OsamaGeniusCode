@@ -169,6 +169,7 @@ class Social extends Component
     protected function resetInputs()
     {
         $this->reset(['name', 'url', 'status', 'social_id']);
+        $this->setErrorBag(['']);
     }
 
     public function render()
