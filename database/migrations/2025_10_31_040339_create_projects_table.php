@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('project_url')->nullable();
             $table->string('repo_url')->nullable();
             $table->string('category');
-            $table->json('tech_stack');
+            $table->json('tech_stack')->nullable();
             $table->string('image')->nullable();
             $table->string('vedio')->nullable();
             $table->timestamps();
