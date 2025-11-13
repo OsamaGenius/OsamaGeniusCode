@@ -47,6 +47,15 @@ textarea {
     height: 100dvh;
 }
 
+.modal-wider {
+    width: 800px;
+    margin-left: -150px;
+    @media (max-width: 850.98px) {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
 .s-50 {
     width: 50px;
 }
