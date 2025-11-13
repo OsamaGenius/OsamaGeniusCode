@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Contorl Panel Title --}}
-    <title>{{ $title ?? 'OsamaGenius Dashboard' }}</title>
+    <title>{{ $title ?  'OsamaGenius: ' . $title : 'OsamaGenius: Dashboard' }}</title>
 
     {{-- Styles / Scripts --}}
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
