@@ -103,7 +103,7 @@
                         <x-slot:for>{{ 'payment' }}</x-slot:for>
                         <x-slot:title>{{ __('Project Payment') }}</x-slot:title>
                         <x-slot:values>{{ 'Free,Payed' }}</x-slot:values>
-                        <div x-show="payed === false">
+                        <div x-show="payed === true" x-transition>
                             <x-forms.input>
                                 <x-slot:type>{{ 'number' }}</x-slot:type>
                                 <x-slot:for>{{ 'price' }}</x-slot:for>
