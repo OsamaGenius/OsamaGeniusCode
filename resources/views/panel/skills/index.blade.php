@@ -1,6 +1,6 @@
 <x-layouts.panel>
 
-    <x-slot:title>{{ __('OsamaGenius: Skills Management') }}</x-slot:title>
+    <x-slot:title>{{ __('Skills Management') }}</x-slot:title>
 
     <div class="container">
     

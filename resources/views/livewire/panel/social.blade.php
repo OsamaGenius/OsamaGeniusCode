@@ -47,7 +47,7 @@
                 <tr>
                     <td colspan="8">
                         <div class="alert alert-primary text-center" role="alert">
-                            Their is no <strong>Social Link</strong> data saved yet!
+                            There is no <strong>Social Links</strong> found!
                         </div>
                     </td>
                 </tr>

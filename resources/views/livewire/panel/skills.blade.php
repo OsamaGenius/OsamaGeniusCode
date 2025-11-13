@@ -74,7 +74,7 @@
                 <tr>
                     <td colspan="8">
                         <div class="alert alert-primary text-center" role="alert">
-                            Their is no <strong>Skills</strong> data saved yet!
+                            There is no <strong>Skills</strong> found!
                         </div>
                     </td>
                 </tr>
