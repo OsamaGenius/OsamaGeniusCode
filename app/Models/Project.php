@@ -24,6 +24,8 @@ class Project extends Model
         'project_url',
         'repo_url',
         'category',
+        'payment',
+        'price',
         'tech_stack',
         'image',
         'video'
