@@ -25,8 +25,22 @@ class Works extends Component
             $description = '',
             $preview = '';
     
+    /*
+    *======================
+    *== Validation Rules ==
+    *======================
+    **/ 
     protected $rules = [
-        # code...
+        'project_id'  => 'integer',
+        'price'       => 'integer',
+        'vedio'       => 'string|max:255',
+        'payment'     => 'string|max:255',
+        'repo_url'    => 'string|max:255',
+        'project_url' => 'string|max:255',
+        'description' => 'required|string|max:255',
+        'title'       => 'required|string|max:255',
+        'category'    => 'required|string|max:255',
+        'tech_stack'  => 'required|string|max:255',
     ];
 
     /*
@@ -56,7 +70,7 @@ class Works extends Component
     **/ 
     public function save()
     {
-        # code...
+        $this->validate();
     }
 
     /*
