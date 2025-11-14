@@ -3,6 +3,8 @@
 namespace App\Livewire\Panel;
 
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Works extends Component
@@ -13,17 +15,17 @@ class Works extends Component
     *== Variables ==
     *===============
     **/ 
-    public  $project_id = '', 
-            $title = '',
-            $category = '', 
-            $payment = 'Free',
+    public  $title = '',
             $price = '',
-            $tech_stack = '',
-            $project_url = '',
-            $repo_url = '',
             $vedio = '',
-            $description = '',
-            $preview = '';
+            $preview = '',
+            $repo_url = '',
+            $category = '',
+            $project_id = '', 
+            $tech_stack = '',
+            $payment = 'Free',
+            $project_url = '',
+            $description = '';
     
     /*
     *======================
@@ -31,7 +33,6 @@ class Works extends Component
     *======================
     **/ 
     protected $rules = [
-        'project_id'  => 'integer',
         'price'       => 'integer',
         'vedio'       => 'string|max:255',
         'payment'     => 'string|max:255',
@@ -43,6 +44,45 @@ class Works extends Component
         'tech_stack'  => 'required|string|max:255',
     ];
 
+    /**
+     * ========================
+     * == Dispatching Events ==
+     * ========================
+     * */
+    protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
+    {
+        $this->dispatch(
+            $event, 
+            [
+                'message' => $message,
+                'type' => $type,
+            ]
+        );
+    }
+
+    /**
+     * ========================================
+     * == Reset Form Feilds from Data Inside ==
+     * ========================================
+     * */
+    public function resetInputs()
+    {
+        $this->reset([
+            'title', 
+            'price', 
+            'vedio',
+            'payment', 
+            'preview', 
+            'repo_url',
+            'category', 
+            'tech_stack',
+            'project_id', 
+            'description', 
+            'project_url', 
+        ]);
+        $this->setErrorBag(['']);
+    }
+    
     /*
     *=================================================================
     *== Filling the edit form when press edit icon in project table ==
@@ -70,7 +110,25 @@ class Works extends Component
     **/ 
     public function save()
     {
-        $this->validate();
+        $validation = $this->validate();
+
+        Project::create([
+            'title' => $validation['title'], 
+            'price' => $validation['payment'] === 'Payment' ? $validation['price'] : 0.00, 
+            'vedio' => $validation['vedio'],
+            'payment' => $validation['payment'] ?? 'Free', 
+            'user_id' => 1, 
+            'repo_url' => $validation['repo_url'],
+            'category' => $validation['category'], 
+            'tech_stack' => Json::encode($validation['tech_stack']),
+            'description' => $validation['description'], 
+            'project_url' => $validation['project_url'],
+            // 'user_id' => Auth::guard('panel')->user()->id, 
+        ]);
+
+        $this->dispatchingMsgs('Successfully added new work data');
+
+        $this->resetInputs();
     }
 
     /*

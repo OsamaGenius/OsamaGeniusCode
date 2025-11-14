@@ -28,7 +28,8 @@ class Project extends Model
         'price',
         'tech_stack',
         'image',
-        'video'
+        'video',
+        'user_id'
     ];
 
     /**

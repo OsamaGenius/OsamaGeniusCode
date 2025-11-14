@@ -16,6 +16,7 @@
             <th>{{ __('#') }}</th>
             <th>{{ __('Image') }}</th>
             <th>{{ __('Title') }}</th>
+            <th>{{ __('Status') }}</th>
             <th>{{ __('Project URL') }}</th>
             <th>{{ __('Repo URL') }}</th>
             <th>{{ __('Category') }}</th>
@@ -34,6 +35,7 @@
                         <td><img class="d-block s-150 rounded-2 border border-light shadow"
                                 src="{{ asset('imgs/co01.png') }}" alt="alt"></td>
                         <td>{{ $work->title }}</td>
+                        <td>{{ $work->payment === 'Payed' ? $work->payment . ' - ' . $work->price . '$' : $work->payment }}</td>
                         <td>
                             @if ($work->project_url)
                                 <a href="{{ $work->project_url }}" target="__blank">{{ __('Live View') }}</a>
@@ -88,7 +90,7 @@
         <x-slot:id>{{ 'works-add-modal' }}</x-slot:id>
         <x-slot:title>{{ 'Adding new work' }}</x-slot:title>
         <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
-        <form>
+        <form wire:submit.prevent="save">
             {{-- Show 2 cols in larg screen & from medium to down show one col --}}
             <div class="row row-cols-1 row-cols-lg-2 g-3">
                 {{-- Left Side --}}
@@ -102,6 +104,9 @@
                     <x-forms.select>
                         <x-slot:for>{{ 'category' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Category' }}</x-slot:placeholder>
+                        <option value="Template">{{__('Template')}}</option>
+                        <option value="Project">{{__('Project')}}</option>
+                        <option value="Photoshop">{{__('Photoshop')}}</option>
                     </x-forms.select>
                     {{-- Payment Feild --}}
                     <x-forms.radio>
@@ -194,7 +199,9 @@
                     <x-forms.select>
                         <x-slot:for>{{ 'category' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Category' }}</x-slot:placeholder>
-                        <option value="Template">Template</option>
+                        <option value="Template">{{__('Template')}}</option>
+                        <option value="Project">{{__('Project')}}</option>
+                        <option value="Photoshop">{{__('Photoshop')}}</option>
                     </x-forms.select>
                     {{-- Payment Feild --}}
                     <x-forms.radio>
