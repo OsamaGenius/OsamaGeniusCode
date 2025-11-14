@@ -85,6 +85,8 @@
         </x-slot:tbody>
     </x-tables.search>
 
+    {{ $works->links() }}
+
     {{-- Adding New Works Modal --}}
     <x-modal.def>
         <x-slot:id>{{ 'works-add-modal' }}</x-slot:id>

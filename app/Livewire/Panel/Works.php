@@ -6,9 +6,12 @@ use App\Models\Project;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Works extends Component
 {
+
+    use WithPagination;
 
     /*
     *===============
@@ -161,7 +164,7 @@ class Works extends Component
         return view(
             'livewire.panel.works',
             [
-                'works' => Project::all()
+                'works' => Project::paginate(3)
             ]
         );
     }
