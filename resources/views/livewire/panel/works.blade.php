@@ -60,12 +60,12 @@
                         <td>{{ $work->updated_at->diffForHumans() }}</td>
                         <td>
                             <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#social-edit-modal"
-                                wire:click.prevent="setSocialID({{ $work->id }})">
+                                data-bs-target="#project-edit-modal"
+                                wire:click.prevent="setProjectID({{ $work->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
                             <button type="button" class="btn" data-bs-toggle="modal" title="Delete"
-                                data-bs-target="#deleteModal" wire:click.prevent="setSocialID({{ $work->id }})">
+                                data-bs-target="#deleteModal" wire:click.prevent="setProjectID({{ $work->id }})">
                                 <i class="fas fa-trash text-danger"></i>
                             </button>
                         </td>
