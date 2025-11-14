@@ -4,4 +4,7 @@
         <option selected>Select one</option>
         {{$slot}}
     </select>
+    @error("$for")
+        <em class="text-danger">{{ $message }}</em>
+    @enderror
 </div>

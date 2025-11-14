@@ -4,3 +4,6 @@
         style="min-height: 100px"></textarea>
     {{$slot}}
 </div>
+@error("$for")
+    <em class="text-danger">{{ $message }}</em>
+@enderror
