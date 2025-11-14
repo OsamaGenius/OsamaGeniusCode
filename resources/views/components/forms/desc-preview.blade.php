@@ -1,16 +1,11 @@
 <div>
     <ul class="nav nav-tabs w-100">
         <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">Code</a>
+            <a href="#" class="nav-link" :class="status === 'code' ? 'active' : ''" aria-current="page" x-on:click.prevent="status = 'code'">Code</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Preview</a>
+            <a href="#" class="nav-link" :class="status === 'preview' ? 'active' : ''" x-on:click.prevent="status = 'preview'">Preview</a>
         </li>
     </ul>
-    <x-forms.textarea>
-        <x-slot:for>{{ 'description' }}</x-slot:for>
-        <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
-        <span style="font-size: 13px"><em>Use Commonmark style to right the
-                description</em></span>
-    </x-forms.textarea>
+    {{$slot}}
 </div>

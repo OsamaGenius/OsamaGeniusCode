@@ -7,6 +7,9 @@ use Livewire\Component;
 
 class Works extends Component
 {
+
+    public $payment = 'Free';
+
     public function render()
     {
         return view(

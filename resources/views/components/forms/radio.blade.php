@@ -6,8 +6,7 @@
     <div class="d-flex">
         @foreach ($radios as $i => $val)
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" wire:model.defer="{{ $for }}"
-                    id="{{ $for . '_' . $i }}" value="{{ $val }}">
+                <input class="form-check-input" type="radio" wire:model.defer="{{ $for }}" id="{{ $for . '_' . $i }}" value="{{ $val }}">
                 <label class="form-check-label" for="{{ $for . '_' . $i }}">{{ $val }}</label>
             </div>
         @endforeach

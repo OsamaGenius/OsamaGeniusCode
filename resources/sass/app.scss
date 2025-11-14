@@ -48,9 +48,13 @@ textarea {
 }
 
 .modal-wider {
-    width: 800px;
-    margin-left: -150px;
-    @media (max-width: 850.98px) {
+    width: 900px;
+    margin-left: -200px;
+    @media (max-width: 920px) {
+        width: 840px;
+        margin-left: -170px;
+    }
+    @media (max-width: 850px) {
         width: 100%;
         margin-left: 0;
     }
