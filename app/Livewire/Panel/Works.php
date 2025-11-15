@@ -118,7 +118,7 @@ class Works extends Component
     **/ 
     public function cancel()
     {
-        # code...
+        $this->resetInputs();
     }
 
     /*
@@ -132,7 +132,7 @@ class Works extends Component
 
         Project::create([
             'title' => $validation['title'], 
-            'price' => $validation['payment'] === 'Payment' ? $validation['price'] : 0.00, 
+            'price' => $validation['payment'] === 'Payed' ? $validation['price'] : 0.00, 
             'vedio' => $validation['vedio'],
             'payment' => $validation['payment'] ?? 'Free', 
             'user_id' => 1, 
@@ -157,7 +157,7 @@ class Works extends Component
     public function update()
     {
         $this->project_id = filter_var($this->project_id, FILTER_SANITIZE_NUMBER_INT);
-        
+
         $validation = $this->validate();
 
         Project::where('id', $this->project_id)->update($validation);
