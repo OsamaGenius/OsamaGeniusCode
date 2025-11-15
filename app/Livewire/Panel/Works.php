@@ -22,6 +22,7 @@ class Works extends Component
     public  $title = '',
             $price = '',
             $vedio = '',
+            $search = '',
             $repo_url = '',
             $category = '',
             $project_id = '', 
@@ -74,6 +75,7 @@ class Works extends Component
     {
         $this->reset([
             'title', 
+            'search', 
             'price', 
             'vedio',
             'payment', 
@@ -195,10 +197,20 @@ class Works extends Component
             $this->markdown = $converter->convert($this->description);
         }
 
+        if($this->search !== '') {
+            $works = Project::where('title', 'like', '%' . $this->search . '%')
+                            ->orWhere('price', 'like', '%' . $this->search . '%')
+                            ->orWhere('payment', 'like', '%' . $this->search . '%')
+                            ->orWhere('category', 'like', '%' . $this->search . '%')
+                            ->paginate(3);
+        } else {
+            $works = Project::paginate(3);
+        }
+
         return view(
             'livewire.panel.works',
             [
-                'works' => Project::paginate(3)
+                'works' => $works
             ]
         );
     }
