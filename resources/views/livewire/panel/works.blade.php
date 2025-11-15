@@ -76,7 +76,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="12">
+                    <td colspan="13">
                         <div class="alert alert-primary text-center" role="alert">
                             There is no <strong>Works</strong> Found!
                         </div>

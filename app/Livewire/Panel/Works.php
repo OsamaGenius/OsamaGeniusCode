@@ -156,6 +156,8 @@ class Works extends Component
     **/ 
     public function update()
     {
+        $this->project_id = filter_var($this->project_id, FILTER_SANITIZE_NUMBER_INT);
+        
         $validation = $this->validate();
 
         Project::where('id', $this->project_id)->update($validation);
@@ -172,7 +174,13 @@ class Works extends Component
     **/ 
     public function delete()
     {
-        # code...
+        $this->project_id = filter_var($this->project_id, FILTER_SANITIZE_NUMBER_INT);
+
+        Project::where('id', $this->project_id)->delete();
+
+        $this->dispatchingMsgs('Successfully Deleted Project Data.');
+
+        $this->resetInputs();
     }
 
     /*
