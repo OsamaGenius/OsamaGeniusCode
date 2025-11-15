@@ -180,7 +180,7 @@
         <x-slot:id>{{ 'works-edit-modal' }}</x-slot:id>
         <x-slot:title>{{ 'Editing work' }}</x-slot:title>
         <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
-        <form>
+        <form wire:submit.prevent="update">
             {{-- Project ID --}}
             <x-forms.input>
                 <x-slot:for>{{ 'project_id' }}</x-slot:for>

@@ -156,7 +156,13 @@ class Works extends Component
     **/ 
     public function update()
     {
-        # code...
+        $validation = $this->validate();
+
+        Project::where('id', $this->project_id)->update($validation);
+
+        $this->dispatchingMsgs('Successfully Updated Project Data.');
+
+        $this->resetInputs();
     }
 
     /*
