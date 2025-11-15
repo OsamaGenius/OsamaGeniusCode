@@ -5,6 +5,7 @@ namespace App\Livewire\Panel;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\CommonMarkConverter;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,7 +22,6 @@ class Works extends Component
     public  $title = '',
             $price = '',
             $vedio = '',
-            $preview = '',
             $repo_url = '',
             $category = '',
             $project_id = '', 
@@ -29,6 +29,8 @@ class Works extends Component
             $payment = 'Free',
             $project_url = '',
             $description = '';
+
+    public string $markdown = '';
     
     /*
     *======================
@@ -75,7 +77,7 @@ class Works extends Component
             'price', 
             'vedio',
             'payment', 
-            'preview', 
+            'markdown', 
             'repo_url',
             'category', 
             'tech_stack',
@@ -93,7 +95,20 @@ class Works extends Component
     **/ 
     public function setProjectID($id)
     {
-        # code...
+        $this->project_id = $id;
+        $work = Project::where('id', $this->project_id)->get(['title', 'description', 'project_url', 'repo_url', 'category', 
+                        'payment', 'price', 'tech_stack', 'vedio']);
+        $this->title = $work[0]->title;
+        $this->price = $work[0]->price;
+        $this->vedio = $work[0]->vedio;
+        $this->payment = $work[0]->payment;
+        $this->repo_url = $work[0]->repo_url;
+        $this->category = $work[0]->category;
+        $this->tech_stack = $work[0]->tech_stack;
+        $this->project_url = $work[0]->project_url;
+        $this->description = $work[0]->description;
+        $converter = new CommonMarkConverter();
+        $this->markdown = $converter->convert($work[0]->description);
     }
 
     /*
@@ -161,6 +176,11 @@ class Works extends Component
     **/ 
     public function render()
     {
+        if($this->description !== '') {
+            $converter = new CommonMarkConverter();
+            $this->markdown = $converter->convert($this->description);
+        }
+
         return view(
             'livewire.panel.works',
             [

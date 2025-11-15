@@ -1,5 +1,6 @@
 <div x-data="{ 
         payed: @entangle('payment'),
+        markdown: @entangle('markdown'),
         status: 'code'
     }" 
     class="py-5"
@@ -62,7 +63,7 @@
                         <td>{{ $work->updated_at->diffForHumans() }}</td>
                         <td>
                             <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#project-edit-modal"
+                                data-bs-target="#works-edit-modal"
                                 wire:click.prevent="setProjectID({{ $work->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
@@ -153,15 +154,13 @@
                             <x-forms.textarea>
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
+                                <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
                                 <span style="font-size: 13px"><em>Use Commonmark style to right the
                                         description</em></span>
                             </x-forms.textarea>
                         </div>
                         <div x-show="status === 'preview'" x-transition>
-                            <x-forms.textarea>
-                                <x-slot:for>{{ 'preview' }}</x-slot:for>
-                                <x-slot:placeholder>{{ 'Project Description View' }}</x-slot:placeholder>
-                            </x-forms.textarea>
+                            <div class="preview" x-html="markdown"></div>
                         </div>
                     </x-forms.desc-preview>
                     {{-- Save Action --}}
@@ -248,15 +247,13 @@
                             <x-forms.textarea>
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
+                                <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
                                 <span style="font-size: 13px"><em>Use Commonmark style to right the
                                         description</em></span>
                             </x-forms.textarea>
                         </div>
                         <div x-show="status === 'preview'" x-transition>
-                            <x-forms.textarea>
-                                <x-slot:for>{{ 'preview' }}</x-slot:for>
-                                <x-slot:placeholder>{{ 'Project Description View' }}</x-slot:placeholder>
-                            </x-forms.textarea>
+                            <div class="preview" x-html="markdown"></div>
                         </div>
                     </x-forms.desc-preview>
                     {{-- Submit --}}
