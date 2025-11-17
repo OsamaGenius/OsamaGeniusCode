@@ -62,6 +62,7 @@
                                     <a 
                                         class="nav-link @if(Route::currentRouteName() === $link['route']) active @endif" 
                                         href="{{route($link['route'])}}"
+                                        wire:navigate
                                     >
                                         {{$link['name']}}
                                     </a>
