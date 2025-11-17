@@ -59,10 +59,8 @@ class Works extends Component
     {
         $this->dispatch(
             $event, 
-            [
-                'message' => $message,
-                'type' => $type,
-            ]
+            message: $message,
+            type: $type,
         );
     }
 
