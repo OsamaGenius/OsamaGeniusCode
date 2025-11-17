@@ -44,7 +44,7 @@ class Works extends Component
         'payment'     => 'string|max:255',
         'repo_url'    => 'string|max:255',
         'project_url' => 'string|max:255',
-        'description' => 'required|string|max:255',
+        'description' => 'required|string|max:2000',
         'title'       => 'required|string|max:255',
         'category'    => 'required|string|max:255',
         'tech_stack'  => 'required|string|max:255',

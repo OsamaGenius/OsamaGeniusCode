@@ -141,7 +141,10 @@
                     <x-forms.textarea>
                         <x-slot:for>{{ 'tech_stack' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Technologies' }}</x-slot:placeholder>
-                        <span style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                        <div class="row">
+                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                            <span class="col-3 text-end" style="font-size: 13px"><em>0/255</em></span>
+                        </div>
                     </x-forms.textarea>
                 </div>
                 {{-- Right Side --}}
@@ -168,8 +171,10 @@
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
                                 <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
-                                <span style="font-size: 13px"><em>Use Commonmark style to right the
-                                        description</em></span>
+                                <div class="row">
+                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to right the description</em></span>
+                                    <span class="col-3 text-end" style="font-size: 13px"><em>0/2000</em></span>
+                                </div>
                             </x-forms.textarea>
                         </div>
                         <div x-show="status === 'preview'" x-transition>
@@ -234,7 +239,10 @@
                     <x-forms.textarea>
                         <x-slot:for>{{ 'tech_stack' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Technologies' }}</x-slot:placeholder>
-                        <span style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                        <div class="row">
+                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                            <span class="col-3 text-end" style="font-size: 13px"><em>0/255</em></span>
+                        </div>
                     </x-forms.textarea>
                 </div>
                 {{-- Right Side --}}
@@ -261,8 +269,10 @@
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
                                 <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
-                                <span style="font-size: 13px"><em>Use Commonmark style to right the
-                                        description</em></span>
+                                <div class="row">
+                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to right the description</em></span>
+                                    <span class="col-3 text-end" style="font-size: 13px"><em>0/2000</em></span>
+                                </div>
                             </x-forms.textarea>
                         </div>
                         <div x-show="status === 'preview'" x-transition>
