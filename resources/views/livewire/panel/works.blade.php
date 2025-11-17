@@ -1,3 +1,7 @@
+@php
+    $converter = app(\League\CommonMark\CommonMarkConverter::class);    
+@endphp
+
 <div x-data="{ 
         payed: @entangle('payment'),
         markdown: @entangle('markdown'),
@@ -56,7 +60,16 @@
                         </td>
                         <td>
                             @if ($work->description)
-                                <a href="#"><i class="fas fa-eye"></i></a>
+                                <a 
+                                    id="descShow"
+                                    href="#" 
+                                    data-description="{{ (string) $converter->convertToHtml($work->description ?? '') }}"
+                                    data-bs-toggle="modal" 
+                                    title="Show Description" 
+                                    data-bs-target="#show-desc-modal"
+                                >
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             @endif
                         </td>
                         <td>{{ $work->created_at->diffForHumans() }}</td>
@@ -274,5 +287,8 @@
     <x-modal.confirm>
         <x-slot:method>{{ 'delete' }}</x-slot:method>
     </x-modal.confirm>
+
+    {{-- Confirm Deleting Modal --}}
+    <x-modal.show-desc></x-modal.show-desc>
 
 </div>
