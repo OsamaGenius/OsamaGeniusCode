@@ -5,7 +5,7 @@
         :class="$store.alert.type === 'success' ? 'alert-success' : 'alert-danger'"
         role="alert"
     >
-        <button type="button" class="btn-close" x-on:click="$store.alert.show = false"></button>
         <b x-text="$store.alert.message"></b>
+        <button type="button" class="btn-close" x-on:click="$store.alert.show = false"></button>
     </div>
 </div>
