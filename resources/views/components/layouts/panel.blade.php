@@ -49,6 +49,7 @@
                         @php
                             $links = [
                                 ['name' => 'Dashboard',     'route' => 'dashboard'],
+                                ['name' => 'Users',         'route' => 'users'],
                                 ['name' => 'About',         'route' => 'panel.about'],
                                 ['name' => 'Works',         'route' => 'panel.works'],
                                 ['name' => 'Skills',        'route' => 'panel.skills'],
