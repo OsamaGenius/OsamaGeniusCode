@@ -3,10 +3,10 @@
 namespace App\Livewire\Panel;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Nette\Utils\Random;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
@@ -25,7 +25,7 @@ class Users extends Component
     #[Rule('string|max:255')]
     public $search = '';
 
-    #[Rule('image|max:1024')]
+    #[Rule('nullable|image|max:1024')]
     public $image;
 
     #[Rule('required|string|max:255')]
@@ -59,6 +59,8 @@ class Users extends Component
 
         if($this->image) {
             $validition['image'] = $this->image->store('Profiles', 'public');
+        } else {
+            $validition['image'] = 'Profiles/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png';
         }
 
         User::create($validition);
@@ -75,12 +77,20 @@ class Users extends Component
      * */
     public function update()
     {
-        $validition = $this->validateOnly('email', [
-            'email' => 'required|email|max:255'
+        $validition = $this->validate([
+            'email' => 'required|email|max:255|unique:'.User::class.',email,'.$this->user_id,
+            'group_id' => 'required|string',
+            'status' => 'required|string',
+            'approvent' => 'required|string',
+            'name' => 'required|string|max:255'
         ]);
 
         if($this->image) {
             $validition['image'] = $this->image->store('Profiles', 'public');
+        }
+
+        if($this->password) {
+            $validition['password'] = Hash::make($this->password);
         }
 
         User::where('id', $this->user_id)->update($validition);
@@ -192,9 +202,9 @@ class Users extends Component
                         ->orWhere('status', 'like', '%' . $this->search . '%')
                         ->orWhere('approvent', 'like', '%' . $this->search . '%')
                         ->orWhere('group_id', 'like', '%' . $this->search . '%')
-                        ->paginate(5);
+                        ->paginate(3);
         } else {
-            $users = User::paginate(5);
+            $users = User::paginate(3);
         }
 
         return view(

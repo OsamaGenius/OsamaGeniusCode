@@ -78,7 +78,15 @@
                 <div class="col">
                     {{-- User Image --}}
                     <div class="text-center mb-3">
-                        <img class="user_image mb-3" src="{{ asset('imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" alt="User_Image">
+                        <img 
+                            class="user_image mb-3" 
+                            @if ($image)
+                                src="{{ $image->temporaryUrl() }}" 
+                            @else
+                                src="{{ asset('imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
+                            @endif
+                            alt="User_Image"
+                        >
                         <x-forms.input>
                             <x-slot:type>{{ 'file' }}</x-slot:type>
                             <x-slot:for>{{ 'image' }}</x-slot:for>
@@ -165,7 +173,15 @@
                 <div class="col">
                     {{-- User Image --}}
                     <div class="text-center mb-3">
-                        <img class="user_image mb-3" src="{{ asset('/storage/' . $path ?? 'imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" alt="User_Image">
+                        <img 
+                            class="user_image mb-3" 
+                            @if ($image)
+                                src="{{ $image->temporaryUrl() }}" 
+                            @else
+                                src="{{ asset('/storage/' . $path) }}" 
+                            @endif
+                            alt="User_Image"
+                        >
                         <x-forms.input>
                             <x-slot:type>{{ 'file' }}</x-slot:type>
                             <x-slot:for>{{ 'image' }}</x-slot:for>
