@@ -15,6 +15,10 @@ Route::prefix('/admin')->group(function () {
             return view('panel.dashboard.index');
         })->name('dashboard');
         
+        Route::get('/users', function() {
+            return view('panel.users.index');
+        })->name('users');
+        
         Route::get('/about', function() {
             return view('panel.about.index');
         })->name('panel.about');
