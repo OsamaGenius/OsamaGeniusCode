@@ -63,7 +63,9 @@
                                     <a 
                                         class="nav-link @if(Route::currentRouteName() === $link['route']) active @endif" 
                                         href="{{route($link['route'])}}"
-                                        wire:navigate
+                                        @if ($link['name'] !== 'Dashboard')
+                                            wire:navigate
+                                        @endif
                                     >
                                         {{$link['name']}}
                                     </a>

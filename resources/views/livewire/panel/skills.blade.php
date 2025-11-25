@@ -20,7 +20,7 @@
         <x-slot:tbody>
             @if (count($skills) > 0)
                 @foreach ($skills as $i => $skill)
-                    <tr>
+                    <tr wire:key="{{$skill->id}}">
                         <td scope="row">{{ $i += 1 }}</td>
                         <td>{{ $skill->name }}</td>
                         <td>

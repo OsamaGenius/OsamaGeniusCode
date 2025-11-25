@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Middleware\PanelAuth;
+use App\Models\Project;
+use App\Models\Skill;
+use App\Models\Social;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->group(function () {
@@ -12,7 +16,15 @@ Route::prefix('/admin')->group(function () {
     // Route::middleware(PanelAuth::class)->group(function () {
         
         Route::get('/dashboard', function() {
-            return view('panel.dashboard.index');
+            return view(
+                'panel.dashboard.index', 
+                [
+                    'users' => count(User::all()),
+                    'projects' => count(Project::all()),
+                    'skills' => count(Skill::all()),
+                    'socials' => count(Social::all()),
+                ]
+            );
         })->name('dashboard');
         
         Route::get('/users', function() {
