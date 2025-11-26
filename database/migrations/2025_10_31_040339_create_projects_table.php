@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('payment')->default('Free');
             $table->double('price')->default(0.00);
             $table->json('tech_stack')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default('imgs/skill.png');
             $table->string('vedio')->nullable();
             $table->timestamps();
         });

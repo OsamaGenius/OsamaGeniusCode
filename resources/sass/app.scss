@@ -178,6 +178,28 @@ textarea {
     }
 }
 
+.show-all-btn {    
+    top: 130px;
+    left: -50px;
+    a {
+        width: 43px;
+        text-wrap: nowrap;
+        transition: width 0.3s ease-in-out;
+        &:hover {
+            animation: show-all-btn-animate 0.3s ease-in-out both;
+        }
+    }
+}
+
+.aspect-square {
+    aspect-ratio: 1 / 1 !important;
+    
+}
+
+.object-cover {
+    object-fit: cover !important;
+}
+
 /*
 |=========================================
 |======= Public View Header Design =======
@@ -472,5 +494,16 @@ textarea {
     }
     100% {
         transform: scale(1.25);
+    }
+}
+
+@keyframes show-all-btn-animate {
+    0% {
+        width: 43px;
+        text-align: center;
+    }
+    100% {
+        width: 80px;
+        text-align: start;
     }
 }
