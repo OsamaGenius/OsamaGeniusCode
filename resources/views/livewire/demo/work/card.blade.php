@@ -2,9 +2,9 @@
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mb-4 position-relative">
 
-        @foreach ($projects as $project)
+        @foreach ($projects as $i => $project)
 
-            <div class="col" wire:key="{{ $project->id }}" data-cate="{{ $project->category }}">
+            <div class="col" wire:key="{{ $i++ }}" data-cate="{{ $project->category }}">
 
                 <div class="card border-0 shadow-sm">
 
@@ -12,7 +12,14 @@
 
                         <span class="badge bg-danger opacity-80 py-2 position-absolute">{{$project->category}}</span>
 
-                        <img src="{{ $project->image !== null ? asset('/storage/' . $project->image) : asset('imgs/hero-img.png') }}"
+                        <img 
+                            src="{{ 
+                                    $project->image !== null 
+                                    ? 
+                                    asset('/storage/' . $project->image) 
+                                    : 
+                                    asset('imgs/projects/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqru2m0dJ.jpg') 
+                                }}"
                             alt="temp" class="card-img aspect-square object-cover" />
 
                         <div class="py-3 px-2">
