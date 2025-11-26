@@ -28,8 +28,8 @@
 
                             <select x-cloak x-show="search === false" x-transition class="form-select s-150"
                                 wire:model.live.throttle.150ms="category">
-                                <option value="" disabled>Select Category</option>
-                                <option value="*">All Works</option>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="All">All Works</option>
                                 <option value="Template">Templates</option>
                                 <option value="Project">Projects</option>
                                 <option value="photoshop">Photoshop</option>
@@ -52,7 +52,7 @@
                                 @if (count($searchResult) > 0)
 
                                     @foreach ($searchResult as $i => $item)
-                                    
+
                                         <div class="text-start mb-0" wire:key="{{$i}}">
                                             <div class="d-flex">
                                                 <h5 class="mb-0">
@@ -83,24 +83,16 @@
                     </div>
 
                     {{-- Latest Templates --}}
-                    @if (count($templates) > 0)
-                        <h4 class="mb-3">{{ 'Latest ' . $templates[0]->category }}</h4>
-                        @livewire('demo.work.card', ['projects' => $templates], key($templates[0]->id))
+                    @if (count($cateResult) > 0)
+                        @livewire('demo.work.card', ['projects' => $cateResult], key(Hash::make($cateResult[0]->id)))
+                    @else
+                        <div class="alert alert-info text-center" role="alert">
+                            No results founded matching this <strong>filter</strong>
+                        </div>
+                        
                     @endif
 
-                    {{-- Latest Projects --}}
-                    @if (count($projects) > 0)
-                        <h4 class="mb-3">{{ 'Latest ' . $projects[0]->category }}</h4>
-                        @livewire('demo.work.card', ['projects' => $projects], key($projects[0]->id))
-                    @endif
-
-                    {{-- Latest Photoshop --}}
-                    @if (count($photoshop) > 0)
-                        <h4 class="mb-3">{{ 'Latest ' . $photoshop[0]->category }}</h4>
-                        @livewire('demo.work.card', ['projects' => $photoshop], key($photoshop[0]->id))
-                    @endif
-                @else
-                    {{-- Homepage works --}}
+                @else {{-- Homepage works --}}
 
                     {{-- Latest Templates --}}
                     @if (count($templates) > 0)
