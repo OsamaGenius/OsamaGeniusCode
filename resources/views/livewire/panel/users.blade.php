@@ -28,7 +28,7 @@
                         <td>
                             <img 
                                 class="d-block s-100 h-100 rounded-4 border-2 border-light shadow-sm" 
-                                src="{{asset('/storage/'.$user->image ?? 'imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png')}}" 
+                                src="{{$user->image !== null ? asset('/storage/'.$user->image) : asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png')}}" 
                                 alt="Actor"
                             >
                         </td>

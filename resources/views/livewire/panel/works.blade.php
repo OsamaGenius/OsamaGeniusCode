@@ -37,8 +37,17 @@
                 @foreach ($works as $i => $work)
                     <tr>
                         <td>{{ $i += 1 }}</td>
-                        <td><img class="d-block s-150 rounded-2 border border-light shadow"
-                                src="{{ asset('imgs/co01.png') }}" alt="alt"></td>
+                        <td>
+                            <img 
+                                class="d-block s-100 rounded-2 border border-light shadow-md"
+                                src="{{ $work->image !== null 
+                                            ? 
+                                            asset('/storage/'.$work->image)
+                                            :
+                                            asset('imgs/projects/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqru2m0dJ.jpg') }}" 
+                                alt="alt"
+                            >
+                        </td>
                         <td>{{ $work->title }}</td>
                         <td>{{ $work->payment === 'Payed' ? $work->payment . ' - ' . $work->price . '$' : $work->payment }}</td>
                         <td>
