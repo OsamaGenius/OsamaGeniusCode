@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->string('title', 150);
             $table->mediumText('description');
             $table->string('project_url')->nullable();
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->string('payment')->default('Free');
             $table->double('price')->default(0.00);
             $table->json('tech_stack')->nullable();
-            $table->string('image')->nullable()->default('imgs/skill.png');
             $table->string('vedio')->nullable();
             $table->timestamps();
         });
