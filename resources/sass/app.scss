@@ -200,6 +200,11 @@ textarea {
     object-fit: cover !important;
 }
 
+.search-box {
+    z-index: 99999;
+    right: min(33px, 8%);
+}
+
 /*
 |=========================================
 |======= Public View Header Design =======
