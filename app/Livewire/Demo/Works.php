@@ -26,7 +26,6 @@ class Works extends Component
         if ($this->search !== '' && Str::length($this->search) > 0) {
             $this->result = true;
             $this->searchResult = Project::where('title', 'like', '%' . $this->search . '%')
-                ->orWhere('category', 'like', '%' . $this->search . '%')
                 ->get(['id', 'title', 'price', 'updated_at']);
         } else {
             $this->result = false;
@@ -50,7 +49,7 @@ class Works extends Component
                     break;
             }
         } else {
-            # Code...
+            $this->reset(['cateResult']);
         }
 
         return view(
