@@ -24,7 +24,11 @@
 
                         <div class="py-3 px-2">
 
-                            <h5 class="card-title mb-1">{{ $project->title }}</h5>
+                            <h5 class="card-title mb-1">
+                                <a href="{{route('works.single', $project->id)}}" class="text-decoration-none">
+                                    {{ $project->title }}
+                                </a>
+                            </h5>
 
                             @if ($project->price > 0)
                                 <h6>{{ '$' . $project->price }}</h6>
