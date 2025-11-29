@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="{{$for}}" class="form-label"></label>
-    <textarea class="form-control" wire:model.{{$modifier ?? 'defer'}}="{{ $for }}" placeholder="{{ $placeholder }}"
+    <textarea class="form-control bg-white" wire:model.{{$modifier ?? 'defer'}}="{{ $for }}" placeholder="{{ $placeholder }}"
         style="min-height: 100px"></textarea>
     {{$slot}}
 </div>
