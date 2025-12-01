@@ -4,6 +4,7 @@ namespace App\Livewire\Panel;
 
 use App\Livewire\Demo\Social as DemoSocial;
 use App\Models\Social as ModelsSocial;
+use App\traits\Dispatching;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -14,7 +15,7 @@ use function PHPUnit\Framework\isEmpty;
 class Social extends Component
 {
 
-    use WithPagination;
+    use WithPagination, Dispatching;
 
     public $search = '';
 
@@ -72,7 +73,7 @@ class Social extends Component
             return;
         endif;
 
-        $this->resetInputs();
+        $this->restFeilds();
 
         $this->dispatch('modal:close');
 
@@ -110,7 +111,7 @@ class Social extends Component
                 return;
             endif;
 
-            $this->resetInputs();
+            $this->restFeilds();
 
             $this->dispatch('modal:close');
 
@@ -126,7 +127,7 @@ class Social extends Component
     public function cancel()
     {
         $this->dispatch('modal:close');
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /**
@@ -142,21 +143,7 @@ class Social extends Component
 
         $this->dispatchingMsgs('Successfully deleted selected record');
 
-        $this->resetInputs();
-    }
-
-    /**
-     * ========================
-     * == Dispatching Events ==
-     * ========================
-     * */
-    protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
-    {
-        $this->dispatch(
-            $event, 
-            message: $message,
-            type: $type,
-        );
+        $this->restFeilds();
     }
 
     /**
@@ -164,10 +151,9 @@ class Social extends Component
      * == Reset Form Feilds from Data Inside ==
      * ========================================
      * */
-    protected function resetInputs()
+    protected function restFeilds()
     {
-        $this->reset(['name', 'url', 'status', 'social_id']);
-        $this->setErrorBag(['']);
+        $this->resetInputs(['name', 'url', 'status', 'social_id']);
     }
 
     public function render()

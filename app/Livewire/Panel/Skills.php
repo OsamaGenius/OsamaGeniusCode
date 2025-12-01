@@ -3,6 +3,7 @@
 namespace App\Livewire\Panel;
 
 use App\Models\Skill;
+use App\traits\Dispatching;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -11,7 +12,7 @@ use Livewire\WithPagination;
 class Skills extends Component
 {
 
-    use WithPagination;
+    use WithPagination, Dispatching;
 
     /**
      * ===================================================
@@ -42,12 +43,11 @@ class Skills extends Component
      * == Reset Form Feilds from Data Inside ==
      * ========================================
      * */
-    public function resetInputs()
+    protected function restFeilds()
     {
-        $this->reset(['search', 'skill_id', 'name', 'percentage', 'level', 'type']);
-        $this->setErrorBag(['']);
+        $this->resetInputs(['search', 'skill_id', 'name', 'percentage', 'level', 'type']);
     }
-    
+
     /**
      * =======================================
      * == Init skill id to update it's data ==
@@ -60,20 +60,6 @@ class Skills extends Component
         $this->name = $skill[0]->name;
         $this->level = $skill[0]->level;
         $this->percentage = $skill[0]->percentage;
-    }
-
-    /**
-     * ========================
-     * == Dispatching Events ==
-     * ========================
-     * */
-    protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
-    {
-        $this->dispatch(
-            $event, 
-            message: $message,
-            type: $type,
-        );
     }
 
     /**
@@ -100,7 +86,7 @@ class Skills extends Component
         $this->dispatchingMsgs('Successfully added new skills data');
 
         // Reset form feilds
-        $this->resetInputs();
+        $this->restFeilds();
 
     }
 
@@ -128,7 +114,7 @@ class Skills extends Component
                 'percentage' => $validation['percentage'],
             ]);
 
-            $this->resetInputs();
+            $this->restFeilds();
 
             $this->dispatchingMsgs('Successfully update skill data');
 
@@ -143,7 +129,7 @@ class Skills extends Component
      * */
     public function cancel()
     {
-        $this->resetInputs();
+        $this->restFeilds();
         $this->dispatch('modal:close');
     }
 
@@ -160,7 +146,7 @@ class Skills extends Component
 
         $this->dispatchingMsgs('Successfully deleted selected record');
 
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     public function render()

@@ -3,6 +3,7 @@
 namespace App\Livewire\Panel;
 
 use App\Models\Project;
+use App\traits\Dispatching;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
 use League\CommonMark\CommonMarkConverter;
@@ -12,7 +13,7 @@ use Livewire\WithPagination;
 class Works extends Component
 {
 
-    use WithPagination;
+    use WithPagination, Dispatching;
 
     /*
     *===============
@@ -51,27 +52,13 @@ class Works extends Component
     ];
 
     /**
-     * ========================
-     * == Dispatching Events ==
-     * ========================
-     * */
-    protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
-    {
-        $this->dispatch(
-            $event, 
-            message: $message,
-            type: $type,
-        );
-    }
-
-    /**
      * ========================================
      * == Reset Form Feilds from Data Inside ==
      * ========================================
      * */
-    public function resetInputs()
+    public function restFeilds()
     {
-        $this->reset([
+        $this->resetInputs([
             'title', 
             'search', 
             'price', 
@@ -85,7 +72,6 @@ class Works extends Component
             'description', 
             'project_url', 
         ]);
-        $this->setErrorBag(['']);
     }
     
     /*
@@ -118,7 +104,7 @@ class Works extends Component
     **/ 
     public function cancel()
     {
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /*
@@ -146,7 +132,7 @@ class Works extends Component
 
         $this->dispatchingMsgs('Successfully added new work data');
 
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /*
@@ -164,7 +150,7 @@ class Works extends Component
 
         $this->dispatchingMsgs('Successfully Updated Project Data.');
 
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /*
@@ -180,7 +166,7 @@ class Works extends Component
 
         $this->dispatchingMsgs('Successfully Deleted Project Data.');
 
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /*

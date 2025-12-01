@@ -3,6 +3,7 @@
 namespace App\Livewire\Panel;
 
 use App\Models\User;
+use App\traits\Dispatching;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -12,7 +13,7 @@ use Livewire\WithFileUploads;
 
 class Users extends Component
 {
-    use WithPagination, WithFileUploads;
+    use WithPagination, WithFileUploads, Dispatching;
 
     /**
      * =========================
@@ -65,7 +66,7 @@ class Users extends Component
 
         User::create($validition);
 
-        $this->resetInputs();
+        $this->restFeilds();
 
         $this->dispatchingMsgs('Successfully added user data');
     }
@@ -95,7 +96,7 @@ class Users extends Component
 
         User::where('id', $this->user_id)->update($validition);
 
-        $this->resetInputs();
+        $this->restFeilds();
 
         $this->dispatchingMsgs('Successfully updated user data');
     }
@@ -109,7 +110,7 @@ class Users extends Component
     {
         User::where('id', $this->user_id)->delete();
 
-        $this->resetInputs();
+        $this->restFeilds();
 
         $this->dispatchingMsgs('Successfully deleted user data');
     }
@@ -122,7 +123,7 @@ class Users extends Component
     public function cancel()
     {
         $this->dispatch('modal:close');
-        $this->resetInputs();
+        $this->restFeilds();
     }
 
     /**
@@ -130,34 +131,9 @@ class Users extends Component
      * == Reset form feilds ==
      * =======================
      * */
-    protected function resetInputs()
+    protected function restFeilds()
     {
-        $this->reset([
-            'group_id',
-            'user_id',
-            'search',
-            'image',
-            'name',
-            'email',
-            'status',
-            'password',
-            'approvent',
-        ]);
-        $this->setErrorBag(['']);
-    }
-
-    /**
-     * ==========================
-     * == Dispatching messages ==
-     * ==========================
-     * */
-    protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
-    {
-        $this->dispatch(
-            $event,
-            message: $message,
-            type: $type,
-        );
+        $this->resetInputs(['group_id', 'user_id', 'search', 'image', 'name', 'email', 'status', 'password', 'approvent']);
     }
 
     /**
