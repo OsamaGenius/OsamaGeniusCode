@@ -191,8 +191,8 @@ class Works extends Component
     public function render()
     {
         if($this->description !== '') {
-            $converter = new CommonMarkConverter();
-            $this->markdown = $converter->convert($this->description);
+            $converter = app(\League\CommonMark\CommonMarkConverter::class);
+            $this->markdown = (string) $converter->convert($this->description);
         }
 
         if($this->search !== '') {

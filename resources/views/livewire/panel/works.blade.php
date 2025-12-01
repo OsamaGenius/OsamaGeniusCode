@@ -72,7 +72,7 @@
                                 <a 
                                     id="descShow"
                                     href="#" 
-                                    data-description="{{ (string) $converter->convertToHtml($work->description ?? '') }}"
+                                    data-description="{{ (string) $converter->convert($work->description) }}"
                                     data-bs-toggle="modal" 
                                     title="Show Description" 
                                     data-bs-target="#show-desc-modal"
