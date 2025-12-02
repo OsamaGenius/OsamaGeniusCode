@@ -10,6 +10,8 @@
 
         <hr class="my-4">
 
+        @livewire('panel.about.story')
+
     </div>
 
 </x-layouts.panel>
