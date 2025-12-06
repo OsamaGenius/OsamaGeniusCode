@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\PanelAuth;
+use App\Livewire\Auth\Login;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Social;
@@ -22,6 +23,8 @@ Route::prefix('/admin')->group(function () {
     })->name('panel.auth.new');
     
     Route::middleware(PanelAuth::class)->group(function () {
+        
+        Route::get('/logout', [Login::class, 'logout'])->name('panel.logout');
         
         Route::get('/dashboard', function() {
             return view(

@@ -89,8 +89,8 @@
                                         <i class="fas fa-user"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                        <a class="dropdown-item" href="#">Action 1</a>
-                                        <a class="dropdown-item" href="#">Action 2</a>
+                                        <a class="dropdown-item" href="#">{{__('Profile')}}</a>
+                                        <a class="dropdown-item" href="{{route('panel.logout')}}">{{__('Logout')}}</a>
                                     </div>
                                 </li>
                             </ul>
