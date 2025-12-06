@@ -248,7 +248,9 @@
                     
                     {{-- Years --}}
                     <div class="col">
-                        <div class="text-center text-md-end">2020 - 2025</div>
+                        <div class="text-center text-md-end">
+                            {{ date('Y') === '2025' ? date('Y') : '2025 - ' . date('Y') }}
+                        </div>
                     </div>
 
                 </div>
