@@ -63,7 +63,7 @@
                             @guest
                                 <li class="nav-item">
                                     <a 
-                                        href="works.html" 
+                                        href="#" 
                                         class="nav-link"
                                     >
                                         Login
@@ -71,7 +71,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a 
-                                        href="works.html" 
+                                        href="#" 
                                         class="nav-link"
                                     >
                                         Register
@@ -79,7 +79,7 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a href="works.html" class="nav-link">Account</a>
+                                    <a href="#" class="nav-link">Account</a>
                                 </li>
                             @endguest
                         </ul>
