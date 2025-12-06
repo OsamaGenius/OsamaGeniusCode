@@ -6,8 +6,10 @@
         accept="image/png, image/jpeg, image/jpg"
         wire:model.{{$modifier ?? 'defer'}}="{{$for}}" 
         placeholder="{{$placeholder}}"
+        value="{{$value ?? ''}}"
     >
     <label for="{{$for}}">{{$placeholder}}</label>
+    {{$slot}}
     @error("$for")
         <em class="text-danger">{{ $message }}</em>
     @enderror

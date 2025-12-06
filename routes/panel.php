@@ -62,6 +62,10 @@ Route::prefix('/admin')->group(function () {
             return view('panel.social.index');
         })->name('panel.socials');
 
+        Route::get('/profile', function() {
+            return view('panel.profile.index');
+        })->name('panel.profile');
+
     });
 
 });
