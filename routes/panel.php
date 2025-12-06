@@ -13,7 +13,15 @@ Route::prefix('/admin')->group(function () {
         return view('panel.index');
     })->name('panel.login');
     
-    // Route::middleware(PanelAuth::class)->group(function () {
+    Route::get('/reset', function() {
+        return view('panel.auth.reset');
+    })->name('panel.auth.reset');
+    
+    Route::get('/reset/new', function() {
+        return view('panel.auth.new');
+    })->name('panel.auth.new');
+    
+    Route::middleware(PanelAuth::class)->group(function () {
         
         Route::get('/dashboard', function() {
             return view(
@@ -47,6 +55,6 @@ Route::prefix('/admin')->group(function () {
             return view('panel.social.index');
         })->name('panel.socials');
 
-    // });
+    });
 
 });
