@@ -48,7 +48,6 @@
                             'Home'       => 'homepage',
                             'About'      => 'about',
                             'My Works'   => 'works',
-                            'Contact Me' => 'contact',
                         ];
                     @endphp
 
@@ -61,7 +60,7 @@
                                     <a href="{{route($route)}}" class="nav-link @if(Route::currentRouteName() === $route) active @endif">{{$name}}</a>
                                 </li>
                             @endforeach
-                            {{-- @guest --}}
+                            @guest
                                 <li class="nav-item">
                                     <a 
                                         href="works.html" 
@@ -78,11 +77,11 @@
                                         Register
                                     </a>
                                 </li>
-                            {{-- @else --}}
+                            @else
                                 <li class="nav-item">
                                     <a href="works.html" class="nav-link">Account</a>
                                 </li>
-                            {{-- @endguest --}}
+                            @endguest
                         </ul>
 
                     </div>
