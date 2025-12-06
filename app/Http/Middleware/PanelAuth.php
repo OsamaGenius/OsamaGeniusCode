@@ -17,11 +17,18 @@ class PanelAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $users = User::where('approvent', 'Yes')->where('status', 'Active')->where('group_id', 'Admins')->get();
-        if( !Auth::guard('panel')->user() && count($users) == 0 ) {
+        // Fetch the admins users
+        $users = Auth::guard('panel')->user();
+
+        // If the provided credentials is not correct
+        if( !$users ) {
             return redirect()
                     ->route('panel.login')
                     ->with('error', 'Only authenticated users can access the dashboard panel');
+        }
+
+        if( $users->approvent != 'Yes' || $users->status != 'Active' || $users->group_id != 'Admins' ) {
+            abort(403, 'Unatherized Access, please contact your admins');
         }
 
         return $next($request);
