@@ -2,6 +2,8 @@
 
 namespace App\traits;
 
+use Illuminate\Support\Facades\Auth;
+
 trait Dispatching
 {
     
@@ -34,6 +36,18 @@ trait Dispatching
             $this->reset($data);
         }
         $this->setErrorBag(['']);
+    }
+
+    /**
+     * ==============================================
+     * == Check if the user are authenticated user ==
+     * ==============================================
+     * */
+    public static function notAdminsAuth()
+    {
+        if(!Auth::guard('panel')->user()) {
+            return redirect()->route('panel.login');
+        }
     }
     
 }

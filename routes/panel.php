@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Social;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->group(function () {
@@ -27,6 +28,9 @@ Route::prefix('/admin')->group(function () {
         Route::get('/logout', [Login::class, 'logout'])->name('panel.logout');
         
         Route::get('/dashboard', function() {
+            if(!Auth::guard('panel')->user()) {
+                return redirect()->route('panel.login');
+            }
             return view(
                 'panel.dashboard.index', 
                 [

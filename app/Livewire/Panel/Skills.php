@@ -149,6 +149,21 @@ class Skills extends Component
         $this->restFeilds();
     }
 
+    /**
+     * ======================================
+     * == Mount data to the view when init ==
+     * ======================================
+     * */
+    public function mount()
+    {
+        Dispatching::notAdminsAuth();
+    }
+
+    /**
+     * ========================
+     * == Rendering the view ==
+     * ========================
+     * */
     public function render()
     {
 

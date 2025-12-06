@@ -115,11 +115,21 @@ class About extends Component
         $this->resetInputs(['view_id', 'about', 'review', 'add', 'show', 'status']);
     }
 
-    /*
-    * |==============================================
-    * |====== Calling the view and render it ========
-    * |==============================================
-    **/ 
+    /**
+     * ======================================
+     * == Mount data to the view when init ==
+     * ======================================
+     * */
+    public function mount()
+    {
+        Dispatching::notAdminsAuth();
+    }
+
+    /**
+     * ========================
+     * == Rendering the view ==
+     * ========================
+     * */
     public function render()
     {
 

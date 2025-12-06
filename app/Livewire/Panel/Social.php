@@ -156,6 +156,21 @@ class Social extends Component
         $this->resetInputs(['name', 'url', 'status', 'social_id']);
     }
 
+    /**
+     * ======================================
+     * == Mount data to the view when init ==
+     * ======================================
+     * */
+    public function mount()
+    {
+        Dispatching::notAdminsAuth();
+    }
+
+    /**
+     * ========================
+     * == Rendering the view ==
+     * ========================
+     * */
     public function render()
     {
         if($this->search !== '') {

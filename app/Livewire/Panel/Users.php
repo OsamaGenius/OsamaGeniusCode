@@ -164,11 +164,20 @@ class Users extends Component
         $this->dispatchingMsgs('Password generated successfully, copy it please');
     }
 
+    /**
+     * ======================================
+     * == Mount data to the view when init ==
+     * ======================================
+     * */
+    public function mount()
+    {
+        Dispatching::notAdminsAuth();
+    }
 
     /**
-     * ===========================
-     * == Viewing the user page ==
-     * ===========================
+     * ========================
+     * == Rendering the view ==
+     * ========================
      * */
     public function render()
     {

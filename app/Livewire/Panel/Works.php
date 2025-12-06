@@ -169,11 +169,21 @@ class Works extends Component
         $this->restFeilds();
     }
 
-    /*
-    *=====================================================
-    *== Rendering and shown the project management page ==
-    *=====================================================
-    **/ 
+    /**
+     * ======================================
+     * == Mount data to the view when init ==
+     * ======================================
+     * */
+    public function mount()
+    {
+        Dispatching::notAdminsAuth();
+    }
+
+    /**
+     * ========================
+     * == Rendering the view ==
+     * ========================
+     * */
     public function render()
     {
         if($this->description !== '') {
