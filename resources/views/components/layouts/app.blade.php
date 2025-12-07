@@ -258,5 +258,7 @@
 
         </footer>
 
+        <script src="{{asset('js/genius.js')}}"></script>
+
     </body>
 </html>
