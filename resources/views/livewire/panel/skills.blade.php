@@ -174,4 +174,8 @@
         <x-slot:method>{{ 'delete' }}</x-slot:method>
     </x-modal.confirm>
 
+    <script defer>
+        
+    </script>
+
 </div>
