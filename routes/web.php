@@ -19,8 +19,12 @@ Route::prefix('/')->group(function () {
     
     Route::get('/works/{project_id}/details', Single::class)->name('works.single');
     
-    Route::get('/contact', function () {
-        return view('demo.works.index');
-    })->name('contact');
+    Route::get('/login', function () {
+        return view('demo.login');
+    })->name('login');
+    
+    Route::get('/register', function () {
+        return view('demo.register');
+    })->name('register');
     
 });

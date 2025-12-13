@@ -63,16 +63,16 @@
                             @guest
                                 <li class="nav-item">
                                     <a 
-                                        href="#" 
-                                        class="nav-link"
+                                        href="{{route('login')}}" 
+                                        class="nav-link @if(Route::currentRouteName() === 'login') active @endif"
                                     >
                                         Login
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a 
-                                        href="#" 
-                                        class="nav-link"
+                                        href="{{route('register')}}" 
+                                        class="nav-link @if(Route::currentRouteName() === 'register') active @endif"
                                     >
                                         Register
                                     </a>
