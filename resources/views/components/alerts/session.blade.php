@@ -1,7 +1,7 @@
 <div x-data x-show="$store.alert.show" x-transition class="position-fixed top-right z-index-top">
 
     <div 
-        class="alert"
+        class="alert shadow-lg border-2"
         :class="$store.alert.type === 'success' ? 'alert-success' : 'alert-danger'"
         role="alert"
     >

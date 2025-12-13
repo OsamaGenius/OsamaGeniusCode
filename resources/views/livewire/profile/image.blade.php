@@ -23,13 +23,16 @@
                             @if (Auth::guard($guard)->user()->image)
                                 src="{{ asset('/storage/' . Auth::guard($guard)->user()->image) }}" 
                             @else
-                                src="{{ asset('/storage/Profiles/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
+                                src="{{ asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
                             @endif
                         @endif
                         alt="Title"
                     >
-                </div>
+
+                    <p wire:loading class="mb-2 w-100 text-center text-secondary">loading...</p>
     
+                </div>
+
                 <x-forms.input>
                     <x-slot:type>{{ 'file' }}</x-slot:type>
                     <x-slot:for>{{ 'image' }}</x-slot:for>

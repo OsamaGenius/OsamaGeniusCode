@@ -29,7 +29,7 @@ class Image extends Component
         if($this->image) {
          
             $validition['image'] = $this->image->store('Profiles', 'public');
-        
+
         }
 
         User::where('id', Auth::guard('panel')->user()->id)->update($validation);

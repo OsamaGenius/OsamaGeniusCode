@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->text('bio')->nullable();
             $table->enum('status', ['Active', 'Not active']);
-            $table->enum('group_id', ['Admins', 'Users']);
+            $table->enum('group_id', ['Admins', 'Users'])->default('Users');
             $table->enum('approvent', ['Yes', 'No']);
             $table->rememberToken();
             $table->timestamps();

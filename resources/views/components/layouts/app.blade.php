@@ -79,7 +79,7 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Account</a>
+                                    <a href="#" class="nav-link">{{ Auth::guard('web')->user()->name }}</a>
                                 </li>
                             @endguest
                         </ul>
