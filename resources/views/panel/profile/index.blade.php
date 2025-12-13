@@ -14,45 +14,7 @@
 
             {{-- Securiry --}}
             <div class="col">
-
-                <div class="card shadow-md bg-white">
-
-                    <div class="card-header border-light text-bg-dark">
-
-                        <h5 class="card-title">{{ __('Update User Password') }}</h5>
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <p>Make sure the password contains at least one small character, capital character, number, and one symbel also it's lenght at least 8 characters.</p>
-
-                        <form>
-
-                            <x-forms.input>
-                                <x-slot:for>{{'password'}}</x-slot:for>
-                                <x-slot:placeholder>{{'Password'}}</x-slot:placeholder>
-                                <em><small>Don't use <strong>old passwords</strong> again, make sure to choose <strong>strong</strong> once.</small></em>
-                            </x-forms.input>
-
-                            <x-forms.input>
-                                <x-slot:for>{{'password_confirm'}}</x-slot:for>
-                                <x-slot:placeholder>{{'Confirm Password'}}</x-slot:placeholder>
-                            </x-forms.input>
-
-                            <div class="text-end">
-                                <button class="btn btn-outline-success">
-                                    <i class="fas fa-edit"></i>
-                                    {{ __('Update') }}
-                                </button>
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
+                @livewire('profile.password', ['guard' => 'panel'])
             </div>
 
         </div>
