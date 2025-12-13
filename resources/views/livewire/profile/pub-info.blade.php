@@ -15,11 +15,20 @@
                 <x-forms.input>
                     <x-slot:for>{{ 'name' }}</x-slot:for>
                     <x-slot:value>{{ Auth::guard('panel')->user()->name }}</x-slot:value>
+                    @if ($lastUpdated)
+                        <x-slot:disabled>{{ 'readonly' }}</x-slot:disabled>
+                    @endif
                     <x-slot:placeholder>{{ 'Username' }}</x-slot:placeholder>
                     <div>
-                        <em>
-                            <small>If you changed your username you will have to wait a month to change it agian</small>
-                        </em>
+                        @if ($lastUpdated)
+                            <em>
+                                <small>Time left to change the name again <b class="text-danger">{{ $days }} days</b></small>
+                            </em>
+                        @else
+                            <em>
+                                <small>If you changed your username you will have to wait a month to change it agian</small>
+                            </em>
+                        @endif
                     </div>
                 </x-forms.input>
 

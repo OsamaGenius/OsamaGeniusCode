@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('Admin@10'),
             'remember_token' => Str::random(10),
+            'created_at' => '2025-10-1 12:54:01',
+            'updated_at' => '2025-10-1 12:54:01',
         ]);
     }
 }

@@ -4,7 +4,9 @@ namespace App\Livewire\Profile;
 
 use App\Models\User;
 use App\traits\Dispatching;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -13,6 +15,8 @@ class PubInfo extends Component
     use Dispatching;
 
     public $guard;
+
+    public $lastUpdated;
 
     #[Rule('required|string|max:255|unique:'.User::class)]
     public $name;
@@ -31,7 +35,7 @@ class PubInfo extends Component
     {
         $validation = $this->validate([
             'name' => 'required|string|max:255|unique:' . User::class . ',name,' . Auth::guard($this->guard)->user()->id,
-            'bio' => 'nullable|string|max:255'
+            'bio' => 'nullable|string|max:255',
         ]);
 
         User::where('id', Auth::guard($this->guard)->user()->id)->update([
@@ -45,6 +49,19 @@ class PubInfo extends Component
 
     public function render()
     {
-        return view('livewire.profile.pub-info');
+        $dbDate = User::where('id', Auth::guard($this->guard)->user()->id)->get('updated_at');
+        $updated = Carbon::create($dbDate[0]->updated_at)->monthOfYear();
+        $date = Carbon::now()->monthOfYear();
+        
+        $this->lastUpdated = $date === $updated;
+
+        $days = $this->lastUpdated ? Carbon::create($dbDate[0]->updated_at)->daysInMonth() - Carbon::create($dbDate[0]->updated_at)->dayOfMonth() : '';
+
+        return view(
+            'livewire.profile.pub-info',
+            [
+                'days' => $days
+            ]
+        );
     }
 }
