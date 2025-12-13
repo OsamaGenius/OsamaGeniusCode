@@ -1,3 +1,4 @@
+@props(['disabled'])
 <div class="form-floating mb-3">
     <input 
         type="{{$type ?? 'text'}}" 
@@ -7,6 +8,7 @@
         wire:model.{{$modifier ?? 'defer'}}="{{$for}}" 
         placeholder="{{$placeholder}}"
         value="{{$value ?? ''}}"
+        {{$disabled ?? ''}}
     >
     <label for="{{$for}}">{{$placeholder}}</label>
     {{$slot}}
