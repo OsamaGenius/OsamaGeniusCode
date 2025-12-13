@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Auth\Public\Login;
 use App\Livewire\Demo\Work\Single;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::prefix('/')->group(function () {
     Route::get('/login', function () {
         return view('demo.login');
     })->name('login');
+    
+    Route::get('/logout', [Login::class, 'logout'])->name('logout');
     
     Route::get('/register', function () {
         return view('demo.register');

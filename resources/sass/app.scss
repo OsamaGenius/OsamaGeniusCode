@@ -229,6 +229,13 @@ textarea {
     background-color: inherit;
 }
 
+.dropdown-menu[data-bs-popper] {
+    @media (min-width: 991.98px) {
+        left: -125px !important;
+        width: 250px !important;   
+    }
+}
+
 /*
 |=========================================
 |======= Public View Header Design =======
@@ -237,7 +244,7 @@ textarea {
 .header,
 .small-header {
     position: relative;
-    background: linear-gradient(145deg, #08283860 10%, #08283840 90%),
+    background: linear-gradient(to bottom, #010c13bb 10%, #08374d5e 90%),
         url("/public/imgs/co02.png");
     background-size: cover;
     background-position: center center;

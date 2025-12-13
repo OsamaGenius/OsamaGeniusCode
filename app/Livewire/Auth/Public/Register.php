@@ -18,7 +18,7 @@ class Register extends Component
     #[Rule('required|email|max:255|unique:' . User::class)]
     public $email;
 
-    #[Rule('required|string|max:255')]
+    #[Rule('required|string|max:255|min:8|max:20')]
     public $password;
 
     public function registerNewUser()
