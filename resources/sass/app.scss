@@ -57,8 +57,8 @@ textarea {
 }
 
 .modal-wider {
-    width: 900px;
-    margin-left: -200px;
+    width: 1000px;
+    margin-left: -250px;
     @media (max-width: 920px) {
         width: 840px;
         margin-left: -170px;
@@ -447,10 +447,10 @@ textarea {
 // ==============================================================
 // ==============================================================
 .holder {
-    background: linear-gradient(145deg, #ffffffea -50%, #ffffffce 100%, #f0f0f030 150%), url('../../public/imgs/logCov.jpg');
+    background: linear-gradient(145deg, #24232330 -50%, #111111ae 100%, #ffffff30 150%), url('../../public/imgs/logCov.jpg');
     background-size: cover;
     background-position: center;
-    filter: grayscale(100);
+    filter: grayscale(50) blur(8px);
     width: 100%;
 }
 .login {

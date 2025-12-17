@@ -2,7 +2,7 @@
 <div class="form-floating mb-3">
     <input 
         type="{{$type ?? 'text'}}" 
-        class="form-control rounded-5 bg-inherit" 
+        class="form-control rounded-3 bg-inherit" 
         min="0"
         accept="image/png, image/jpeg, image/jpg"
         wire:model.{{$modifier ?? 'defer'}}="{{$for}}" 

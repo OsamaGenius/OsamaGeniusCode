@@ -1,14 +1,12 @@
 @php
-    $converter = app(\League\CommonMark\CommonMarkConverter::class);    
+    $converter = app(\League\CommonMark\CommonMarkConverter::class);
 @endphp
 
-<div x-data="{ 
-        payed: @entangle('payment'),
-        markdown: @entangle('markdown'),
-        status: 'code'
-    }" 
-    class="py-5"
->
+<div x-data="{
+    payed: @entangle('payment'),
+    markdown: @entangle('markdown'),
+    status: 'code',
+}" class="py-5">
 
     {{-- Success & Failure Messages --}}
     <x-alerts.session></x-alerts.session>
@@ -38,18 +36,15 @@
                     <tr>
                         <td>{{ $i += 1 }}</td>
                         <td>
-                            <img 
-                                class="d-block s-100 rounded-2 border border-light shadow-md"
-                                src="{{ $work->image !== null 
-                                            ? 
-                                            asset('/storage/'.$work->image)
-                                            :
-                                            asset('imgs/projects/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqru2m0dJ.jpg') }}" 
-                                alt="alt"
-                            >
+                            <img class="d-block s-100 rounded-2 border border-light shadow-md"
+                                src="{{ $work->image !== null
+                                    ? asset('/storage/' . $work->image)
+                                    : asset('imgs/projects/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqru2m0dJ.jpg') }}"
+                                alt="alt">
                         </td>
                         <td>{{ $work->title }}</td>
-                        <td>{{ $work->payment === 'Payed' ? $work->payment . ' - ' . $work->price . '$' : $work->payment }}</td>
+                        <td>{{ $work->payment === 'Payed' ? $work->payment . ' - ' . $work->price . '$' : $work->payment }}
+                        </td>
                         <td>
                             @if ($work->project_url)
                                 <a href="{{ $work->project_url }}" target="__blank">{{ __('Live View') }}</a>
@@ -69,14 +64,9 @@
                         </td>
                         <td>
                             @if ($work->description)
-                                <a 
-                                    id="descShow"
-                                    href="#" 
+                                <a id="descShow" href="#"
                                     data-description="{{ (string) $converter->convert($work->description) }}"
-                                    data-bs-toggle="modal" 
-                                    title="Show Description" 
-                                    data-bs-target="#show-desc-modal"
-                                >
+                                    data-bs-toggle="modal" title="Show Description" data-bs-target="#show-desc-modal">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             @endif
@@ -117,9 +107,23 @@
         <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
         <form wire:submit.prevent="save">
             {{-- Show 2 cols in larg screen & from medium to down show one col --}}
-            <div class="row row-cols-1 row-cols-lg-2 g-3">
+            <div class="row row-cols-1 row-cols-lg-3 g-3">
                 {{-- Left Side --}}
-                <div class="col-12 col-lg-5">
+                <div class="col-12 col-lg-3">
+                    <div class="text-center">
+                        <h5 class="mb-2">Choose Project Image</h5>
+                        <input type="file" class="form-control mb-2" wire:model="image">
+                        <span wire:loading class="text-success">loading...</span>
+                        <img
+                            src="{{ $image ? $image->temporaryUrl() : asset('imgs/projects/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqru2m0dJ.jpg') }}"
+                            class="img-fluid rounded-3 mt-2 shadow-md border-2 border-light" 
+                            alt="show"
+                            accept="image/png, image/jpeg, image/jpg"
+                        >
+                    </div>
+                </div>
+                {{-- center Side --}}
+                <div class="col-12 col-lg-4">
                     {{-- Project Title --}}
                     <x-forms.input>
                         <x-slot:for>{{ 'title' }}</x-slot:for>
@@ -129,9 +133,9 @@
                     <x-forms.select>
                         <x-slot:for>{{ 'category' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Category' }}</x-slot:placeholder>
-                        <option value="Template">{{__('Template')}}</option>
-                        <option value="Project">{{__('Project')}}</option>
-                        <option value="Photoshop">{{__('Photoshop')}}</option>
+                        <option value="Template">{{ __('Template') }}</option>
+                        <option value="Project">{{ __('Project') }}</option>
+                        <option value="Photoshop">{{ __('Photoshop') }}</option>
                     </x-forms.select>
                     {{-- Payment Feild --}}
                     <x-forms.radio>
@@ -151,13 +155,14 @@
                         <x-slot:for>{{ 'tech_stack' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Technologies' }}</x-slot:placeholder>
                         <div class="row">
-                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech
+                                    stack</em></span>
                             <span class="col-3 text-end" style="font-size: 13px"><em>0/255</em></span>
                         </div>
                     </x-forms.textarea>
                 </div>
                 {{-- Right Side --}}
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-5">
                     {{-- Project Live Demo URL --}}
                     <x-forms.input>
                         <x-slot:for>{{ 'project_url' }}</x-slot:for>
@@ -179,9 +184,10 @@
                             <x-forms.textarea>
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
-                                <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
+                                <x-slot:modifier>{{ 'live.throttle.150ms' }}</x-slot:modifier>
                                 <div class="row">
-                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to right the description</em></span>
+                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to
+                                            right the description</em></span>
                                     <span class="col-3 text-end" style="font-size: 13px"><em>0/2000</em></span>
                                 </div>
                             </x-forms.textarea>
@@ -217,7 +223,22 @@
             {{-- One column in small screens and in large one show two columns --}}
             <div class="row row-cols-1 row-cols-lg-2 g-3">
                 {{-- Left Side --}}
-                <div class="col-12 col-lg-5">
+                <div class="col-12 col-lg-3">
+                    <div class="text-center">
+                        <h5 class="mb-2">Choose Project Image</h5>
+                        <input type="file" class="form-control mb-2" wire:model="image">
+                        <span wire:loading class="text-success">loading...</span>
+                        <img 
+                            src="{{ $image ? $image->temporaryUrl() : asset('/storage/' . $path) }}"
+                            class="img-fluid rounded-3 mt-2 shadow-md border-2 border-light" 
+                            alt="show"
+                            accept="image/png, image/jpeg, image/jpg"
+                            ac
+                        >
+                    </div>
+                </div>
+                {{-- Left Side --}}
+                <div class="col-12 col-lg-4">
                     {{-- Project Title --}}
                     <x-forms.input>
                         <x-slot:for>{{ 'title' }}</x-slot:for>
@@ -227,9 +248,9 @@
                     <x-forms.select>
                         <x-slot:for>{{ 'category' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Category' }}</x-slot:placeholder>
-                        <option value="Template">{{__('Template')}}</option>
-                        <option value="Project">{{__('Project')}}</option>
-                        <option value="Photoshop">{{__('Photoshop')}}</option>
+                        <option value="Template">{{ __('Template') }}</option>
+                        <option value="Project">{{ __('Project') }}</option>
+                        <option value="Photoshop">{{ __('Photoshop') }}</option>
                     </x-forms.select>
                     {{-- Payment Feild --}}
                     <x-forms.radio>
@@ -249,13 +270,14 @@
                         <x-slot:for>{{ 'tech_stack' }}</x-slot:for>
                         <x-slot:placeholder>{{ 'Project Technologies' }}</x-slot:placeholder>
                         <div class="row">
-                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech stack</em></span>
+                            <span class="col-9 text-start" style="font-size: 13px"><em>Use Json style to right the tech
+                                    stack</em></span>
                             <span class="col-3 text-end" style="font-size: 13px"><em>0/255</em></span>
                         </div>
                     </x-forms.textarea>
                 </div>
                 {{-- Right Side --}}
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-5">
                     {{-- Project Live Demo URL --}}
                     <x-forms.input>
                         <x-slot:for>{{ 'project_url' }}</x-slot:for>
@@ -277,9 +299,10 @@
                             <x-forms.textarea>
                                 <x-slot:for>{{ 'description' }}</x-slot:for>
                                 <x-slot:placeholder>{{ 'Project Description' }}</x-slot:placeholder>
-                                <x-slot:modifier>{{'live.throttle.150ms'}}</x-slot:modifier>
+                                <x-slot:modifier>{{ 'live.throttle.150ms' }}</x-slot:modifier>
                                 <div class="row">
-                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to right the description</em></span>
+                                    <span class="col-9 text-start" style="font-size: 13px"><em>Use Commonmark style to
+                                            right the description</em></span>
                                     <span class="col-3 text-end" style="font-size: 13px"><em>0/2000</em></span>
                                 </div>
                             </x-forms.textarea>

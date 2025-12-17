@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
 use League\CommonMark\CommonMarkConverter;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Works extends Component
 {
 
-    use WithPagination, Dispatching;
+    use WithPagination, Dispatching, WithFileUploads;
 
     /*
     *===============
@@ -22,6 +23,7 @@ class Works extends Component
     **/ 
     public  $title = '',
             $price = '',
+            $image,
             $vedio = '',
             $search = '',
             $repo_url = '',
@@ -33,6 +35,7 @@ class Works extends Component
             $description = '';
 
     public string $markdown = '';
+    public $path;
     
     /*
     *======================
@@ -49,6 +52,7 @@ class Works extends Component
         'title'       => 'required|string|max:255',
         'category'    => 'required|string|max:255',
         'tech_stack'  => 'required|string|max:255',
+        'image'       => 'nullable|image|max:2048'
     ];
 
     /**
@@ -62,6 +66,7 @@ class Works extends Component
             'title', 
             'search', 
             'price', 
+            'image', 
             'vedio',
             'payment', 
             'markdown', 
@@ -83,7 +88,7 @@ class Works extends Component
     {
         $this->project_id = $id;
         $work = Project::where('id', $this->project_id)->get(['title', 'description', 'project_url', 'repo_url', 'category', 
-                        'payment', 'price', 'tech_stack', 'vedio']);
+                        'payment', 'price', 'tech_stack', 'vedio', 'image']);
         $this->title = $work[0]->title;
         $this->price = $work[0]->price;
         $this->vedio = $work[0]->vedio;
@@ -93,6 +98,7 @@ class Works extends Component
         $this->tech_stack = $work[0]->tech_stack;
         $this->project_url = $work[0]->project_url;
         $this->description = $work[0]->description;
+        $this->path = $work[0]->image;
         $converter = new CommonMarkConverter();
         $this->markdown = $converter->convert($work[0]->description);
     }
@@ -116,18 +122,22 @@ class Works extends Component
     {
         $validation = $this->validate();
 
+        if($this->image) {
+            $path = $this->image->store('Projects/' . $this->category, 'public');
+        }
+
         Project::create([
             'title' => $validation['title'], 
+            'image' => $path, 
             'price' => $validation['payment'] === 'Payed' ? $validation['price'] : 0.00, 
             'vedio' => $validation['vedio'],
             'payment' => $validation['payment'] ?? 'Free', 
-            'user_id' => 1, 
             'repo_url' => $validation['repo_url'],
             'category' => $validation['category'], 
             'tech_stack' => Json::encode($validation['tech_stack']),
             'description' => $validation['description'], 
             'project_url' => $validation['project_url'],
-            // 'user_id' => Auth::guard('panel')->user()->id, 
+            'user_id' => Auth::guard('panel')->user()->id, 
         ]);
 
         $this->dispatchingMsgs('Successfully added new work data');
@@ -144,7 +154,17 @@ class Works extends Component
     {
         $this->project_id = filter_var($this->project_id, FILTER_SANITIZE_NUMBER_INT);
 
+        $oldImg = Project::where('id', $this->project_id)->get('image');
+
         $validation = $this->validate();
+
+        if($this->image) {
+            $path = $this->image->store('Projects/' . $this->category, 'public');
+        } else {
+            $path = $oldImg[0]->image;
+        }
+
+        $validation['image'] = $path;
 
         Project::where('id', $this->project_id)->update($validation);
 
