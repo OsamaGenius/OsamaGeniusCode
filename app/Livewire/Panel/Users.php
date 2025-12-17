@@ -47,7 +47,7 @@ class Users extends Component
     #[Rule('required|string')]
     public $status = 'Not Active';
 
-    public $path = 'imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png';
+    public $path;
 
     /**
      * ========================
@@ -151,6 +151,7 @@ class Users extends Component
         $this->status = $user[0]->status;
         $this->approvent = $user[0]->approvent;
         $this->group_id = $user[0]->group_id;
+        $this->path = $user[0]->image;
     }
 
     /**

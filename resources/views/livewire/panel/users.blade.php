@@ -28,7 +28,7 @@
                         <td>
                             <img 
                                 class="d-block s-100 h-100 rounded-4 border-2 border-light shadow-sm" 
-                                src="{{$user->image !== null ? asset('/storage/'.$user->image) : asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png')}}" 
+                                src="{{$user->image ? asset('/storage/'.$user->image) : asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png')}}" 
                                 alt="Actor"
                             >
                         </td>
@@ -83,10 +83,13 @@
                             @if ($image)
                                 src="{{ $image->temporaryUrl() }}" 
                             @else
-                                src="{{ asset('imgs/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
+                                src="{{ asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
                             @endif
                             alt="User_Image"
                         >
+                        <div>
+                            <span wire:loading class="text-success">loading...</span>
+                        </div>
                         <x-forms.input>
                             <x-slot:type>{{ 'file' }}</x-slot:type>
                             <x-slot:for>{{ 'image' }}</x-slot:for>
@@ -125,7 +128,7 @@
                     </x-forms.radio>
                     {{-- User Password --}}
                     <div class="d-flex mb-3">
-                        <div class="flex-grow-1">
+                        <div style="flex-grow: 1">
                             <x-forms.input>
                                 <x-slot:type>{{ 'password' }}</x-slot:type>
                                 <x-slot:for>{{ 'password' }}</x-slot:for>
@@ -178,10 +181,17 @@
                             @if ($image)
                                 src="{{ $image->temporaryUrl() }}" 
                             @else
-                                src="{{ asset('/storage/' . $path) }}" 
+                                @if ($path)
+                                    src="{{ asset('/storage/' . $path) }}" 
+                                @else
+                                    src="{{ asset('/storage/Profiles/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
+                                @endif
                             @endif
                             alt="User_Image"
                         >
+                        <div>
+                            <span wire:loading class="text-success">loading...</span>
+                        </div>
                         <x-forms.input>
                             <x-slot:type>{{ 'file' }}</x-slot:type>
                             <x-slot:for>{{ 'image' }}</x-slot:for>
@@ -220,7 +230,7 @@
                     </x-forms.radio>
                     {{-- User Password --}}
                     <div class="d-flex mb-3">
-                        <div class="flex-grow-1">
+                        <div style="flex-grow: 1">
                             <x-forms.input>
                                 <x-slot:type>{{ 'password' }}</x-slot:type>
                                 <x-slot:for>{{ 'password' }}</x-slot:for>
