@@ -68,6 +68,8 @@ class Users extends Component
 
         $this->restFeilds();
 
+        $this->closeModal('user-add-modal');
+
         $this->dispatchingMsgs('Successfully added user data');
     }
 
@@ -98,6 +100,8 @@ class Users extends Component
 
         $this->restFeilds();
 
+        $this->closeModal('user-edit-modal');
+
         $this->dispatchingMsgs('Successfully updated user data');
     }
 
@@ -112,6 +116,8 @@ class Users extends Component
 
         $this->restFeilds();
 
+        $this->closeModal('user-del-modal');
+
         $this->dispatchingMsgs('Successfully deleted user data');
     }
 
@@ -122,7 +128,8 @@ class Users extends Component
      * */
     public function cancel()
     {
-        $this->dispatch('modal:close');
+        $this->closeModal('user-edit-modal');
+
         $this->restFeilds();
     }
 

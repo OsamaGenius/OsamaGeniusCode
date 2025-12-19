@@ -6,7 +6,7 @@
     {{-- Adding new users button & Searching --}}
     <x-tables.search>
         <x-slot:title>{{ __('Users Management Table') }}</x-slot:title>
-        <x-slot:add>{{ '#user-add-modal' }}</x-slot:add>
+        <x-slot:add>{{ 'user-add-modal' }}</x-slot:add>
         <x-slot:thead>
             <th>{{ __('#') }}</th>
             <th>{{ __('Image') }}</th>
@@ -41,13 +41,14 @@
                         <td>{{$user->created_at->diffForHumans()}}</td>
                         <td>{{$user->updated_at->diffForHumans()}}</td>
                         <td>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#user-edit-modal"
+                            <button type="button" class="btn" title="Edit"
+                                x-on:click="$dispatch('open-modal', {name: 'user-edit-modal'})"
                                 wire:click.prevent="setSocialID({{ $user->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Delete"
-                                data-bs-target="#deleteModal" wire:click.prevent="setSocialID({{ $user->id }})">
+                            <button type="button" class="btn" title="Delete"
+                                x-on:click="$dispatch('open-modal', {name: 'user-del-modal'})"
+                                wire:click.prevent="setSocialID({{ $user->id }})">
                                 <i class="fas fa-trash text-danger"></i>
                             </button>
                         </td>
@@ -68,10 +69,7 @@
     {{ $users->links() }}
 
     {{-- Adding Modal Form --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'user-add-modal' }}</x-slot:id>
-        <x-slot:title>{{ 'Adding New Users' }}</x-slot:title>
-        <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
+    <x-modal.def name="user-add-modal" title="Adding New Users" class="modal-wider">
         <form wire:submit.prevent='save'>
             {{-- Show 2 cols in larg screen & from medium to down show one col --}}
             <div class="row row-cols-1 row-cols-lg-2 g-4">
@@ -160,10 +158,7 @@
     </x-modal.def>
 
     {{-- Editing Modal Form --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'user-edit-modal' }}</x-slot:id>
-        <x-slot:title>{{ 'Update Users' }}</x-slot:title>
-        <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
+    <x-modal.def name="user-edit-modal" title="Update Users" class="modal-wider">
         <form wire:submit.prevent='update'>
             {{-- User ID --}}
             <x-forms.input>
@@ -265,8 +260,8 @@
     </x-modal.def>
 
     {{-- Confirm Deleting Modal --}}
-    <x-modal.confirm>
-        <x-slot:method>{{ 'delete' }}</x-slot:method>
-    </x-modal.confirm>
+    <x-modal.def name="user-del-modal">
+        <x-slot:type>{{ 'confirm' }}</x-slot:type>
+    </x-modal.def>
 
 </div>

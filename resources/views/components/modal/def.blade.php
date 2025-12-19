@@ -1,4 +1,4 @@
-@props(['name', 'title', 'type' => ''])
+@props(['name', 'title' => 'Confirm Deletion', 'type' => '', 'class'])
 <div 
     x-data="{ 
         visible: false,
@@ -16,7 +16,7 @@
 
         <div class="backbone" x-on:click="visible = false"></div>
 
-        <div class="modal-content bg-light rounded-3 py-2 px-3 mt-5 position-fixed">
+        <div class="modal-content bg-light rounded-3 py-2 px-3 mt-5 {{ isset($class) ? $class : '' }}">
 
             @if (isset($title))
                 <div class="modal-header py-2 border-bottom">
@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <div class="modal-bodey py-2">
+            <div class="modal-body py-2">
                 @if ($type == 'confirm')
                     <b>{{__('Are you sure you want to delete the selected item')}}</b>       
                     <div class="text-end mt-3">

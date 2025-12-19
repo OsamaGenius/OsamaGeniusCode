@@ -14,7 +14,7 @@
     {{-- Works Data Table View --}}
     <x-tables.search>
         <x-slot:title>{{ __('Works Management Table') }}</x-slot:title>
-        <x-slot:add>{{ '#works-add-modal' }}</x-slot:add>
+        <x-slot:add>{{ 'works-add-modal' }}</x-slot:add>
         <x-slot:thead>
             <th>{{ __('#') }}</th>
             <th>{{ __('Image') }}</th>
@@ -74,13 +74,14 @@
                         <td>{{ $work->created_at->diffForHumans() }}</td>
                         <td>{{ $work->updated_at->diffForHumans() }}</td>
                         <td>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#works-edit-modal"
+                            <button type="button" class="btn" title="Edit"
+                                x-on:click="$dispatch('open-modal', {name: 'works-edit-modal'})"
                                 wire:click.prevent="setProjectID({{ $work->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Delete"
-                                data-bs-target="#deleteModal" wire:click.prevent="setProjectID({{ $work->id }})">
+                            <button type="button" class="btn" title="Delete"
+                                x-on:click="$dispatch('open-modal', {name: 'works-del-modal'})"
+                                wire:click.prevent="setProjectID({{ $work->id }})">
                                 <i class="fas fa-trash text-danger"></i>
                             </button>
                         </td>
@@ -101,10 +102,7 @@
     {{ $works->links() }}
 
     {{-- Adding New Works Modal --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'works-add-modal' }}</x-slot:id>
-        <x-slot:title>{{ 'Adding new work' }}</x-slot:title>
-        <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
+    <x-modal.def name="works-add-modal" title="Adding new work" class="modal-wider">
         <form wire:submit.prevent="save">
             {{-- Show 2 cols in larg screen & from medium to down show one col --}}
             <div class="row row-cols-1 row-cols-lg-3 g-3">
@@ -209,10 +207,7 @@
     </x-modal.def>
 
     {{-- Eidt Works Modal --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'works-edit-modal' }}</x-slot:id>
-        <x-slot:title>{{ 'Editing work' }}</x-slot:title>
-        <x-slot:class>{{ 'modal-wider' }}</x-slot:class>
+    <x-modal.def name="works-edit-modal" title="Editing work" class="modal-wider">
         <form wire:submit.prevent="update">
             {{-- Project ID --}}
             <x-forms.input>
@@ -326,9 +321,9 @@
     </x-modal.def>
 
     {{-- Confirm Deleting Modal --}}
-    <x-modal.confirm>
-        <x-slot:method>{{ 'delete' }}</x-slot:method>
-    </x-modal.confirm>
+    <x-modal.def name="works-del-modal">
+        <x-slot:type>{{ 'confirm' }}</x-slot:type>
+    </x-modal.def>
 
     {{-- Confirm Deleting Modal --}}
     <x-modal.show-desc></x-modal.show-desc>

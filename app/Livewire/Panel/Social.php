@@ -75,7 +75,7 @@ class Social extends Component
 
         $this->restFeilds();
 
-        $this->dispatch('modal:close');
+        $this->closeModal('social-add-modal');
 
         $this->dispatch('update-view', $links);
 
@@ -113,7 +113,7 @@ class Social extends Component
 
             $this->restFeilds();
 
-            $this->dispatch('modal:close');
+            $this->closeModal('social-edit-modal');
 
             $this->dispatchingMsgs('Successfully updated selected record');
         }
@@ -126,8 +126,8 @@ class Social extends Component
      * */
     public function cancel()
     {
-        $this->dispatch('modal:close');
         $this->restFeilds();
+        $this->closeModal('social-edit-modal');
     }
 
     /**
@@ -139,7 +139,7 @@ class Social extends Component
     {
         ModelsSocial::findOrFail($this->social_id)->delete();
 
-        $this->dispatch('modal:close');
+        $this->closeModal('social-del-modal');
 
         $this->dispatchingMsgs('Successfully deleted selected record');
 

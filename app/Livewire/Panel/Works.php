@@ -110,6 +110,8 @@ class Works extends Component
     **/ 
     public function cancel()
     {
+        $this->closeModal('works-edit-modal');
+
         $this->restFeilds();
     }
 
@@ -124,6 +126,8 @@ class Works extends Component
 
         if($this->image) {
             $path = $this->image->store('Projects/' . $this->category, 'public');
+        } else {
+            $path = '';
         }
 
         Project::create([
@@ -141,6 +145,8 @@ class Works extends Component
         ]);
 
         $this->dispatchingMsgs('Successfully added new work data');
+
+        $this->closeModal('works-add-modal');
 
         $this->restFeilds();
     }
@@ -170,6 +176,8 @@ class Works extends Component
 
         $this->dispatchingMsgs('Successfully Updated Project Data.');
 
+        $this->closeModal('works-edit-modal');
+
         $this->restFeilds();
     }
 
@@ -185,6 +193,8 @@ class Works extends Component
         Project::where('id', $this->project_id)->delete();
 
         $this->dispatchingMsgs('Successfully Deleted Project Data.');
+
+        $this->closeModal('works-del-modal');
 
         $this->restFeilds();
     }
