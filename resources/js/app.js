@@ -44,10 +44,12 @@ window.addEventListener('show-alert', event => {
     Alpine.store('alert').trigger(message, type);
 });
 
+
 window.addEventListener('livewire:load', function () {
     const modal = new bootstrap.Modal(document.getElementById('skills-edit-modal'));
+    console.log(modal);
     window.addEventListener('modal:keep-open', () => modal.show() );
-    window.addEventListener('modal:close', () => modal.hide() );
+    window.addEventListener('modal:close', () => document.getElementById('skills-edit-modal').hide() );
 });
 
 Livewire.on('copy', (text) => {

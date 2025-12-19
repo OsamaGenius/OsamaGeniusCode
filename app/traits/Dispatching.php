@@ -8,9 +8,9 @@ trait Dispatching
 {
     
     /**
-     * ========================
-     * == Dispatching Events ==
-     * ========================
+     * ======================================
+     * == Dispatching Show Messages Events ==
+     * ======================================
      * */
     protected function dispatchingMsgs($message,  $type = 'success', $event = 'show-alert')
     {
@@ -18,6 +18,19 @@ trait Dispatching
             $event, 
             message: $message,
             type: $type,
+        );
+    }
+    
+    /**
+     * =====================================
+     * == Dispatching Close Modals Event ==
+     * =====================================
+     * */
+    protected function closeModal($name)
+    {
+        $this->dispatch(
+            'close-modal', 
+            name: $name
         );
     }
 

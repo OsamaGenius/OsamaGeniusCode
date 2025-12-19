@@ -1,7 +1,10 @@
 <form class="d-flex mb-3">
 
     <div class="col text-start">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="{{$add}}">
+        {{-- <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="{{$add}}">
+            <i class="fas fa-plus me-1"></i>{{ __('Add new') }}
+        </button> --}}
+        <button type="button" class="btn btn-outline-primary" x-on:click="$dispatch('open-modal', {name: '{{$add}}'})">
             <i class="fas fa-plus me-1"></i>{{ __('Add new') }}
         </button>
     </div>

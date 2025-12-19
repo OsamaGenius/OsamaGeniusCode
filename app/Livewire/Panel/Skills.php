@@ -78,8 +78,7 @@ class Skills extends Component
             'name' => $validation['name'],
             'level' => $validation['level'],
             'percentage' => $validation['percentage'],
-            // 'user_id' => Auth::guard('panel')->user()->id,
-            'user_id' => '1',
+            'user_id' => Auth::guard('panel')->user()->id,
         ]);
 
         // Show success message
@@ -87,6 +86,8 @@ class Skills extends Component
 
         // Reset form feilds
         $this->restFeilds();
+
+        $this->closeModal('skills-add-modal');
 
     }
 
@@ -118,7 +119,8 @@ class Skills extends Component
 
             $this->dispatchingMsgs('Successfully update skill data');
 
-            $this->dispatch('modal:close');
+            $this->closeModal('skills-edit-modal');
+
         }
     }
 
@@ -130,7 +132,8 @@ class Skills extends Component
     public function cancel()
     {
         $this->restFeilds();
-        $this->dispatch('modal:close');
+
+        $this->closeModal('skills-edit-modal');
     }
 
     /**
@@ -142,7 +145,7 @@ class Skills extends Component
     {
         Skill::findOrFail($this->skill_id)->delete();
 
-        $this->dispatch('modal:close');
+        $this->closeModal('skills-del-modal');
 
         $this->dispatchingMsgs('Successfully deleted selected record');
 

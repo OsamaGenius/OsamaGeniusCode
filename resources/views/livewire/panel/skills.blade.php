@@ -5,7 +5,8 @@
 
     {{-- Import Table --}}
     <x-tables.search>
-        <x-slot:add>{{ '#skills-add-modal' }}</x-slot:add>
+        {{-- <x-slot:add>{{ '#skills-add-modal' }}</x-slot:add> --}}
+        <x-slot:add>{{ 'skills-add-modal' }}</x-slot:add>
         <x-slot:title>{{ __('Skills Management Table') }}</x-slot:title>
         <x-slot:thead>
             <th>{{ __('#') }}</th>
@@ -58,13 +59,14 @@
                         <td>{{ $skill->created_at->diffForHumans() }}</td>
                         <td>{{ $skill->updated_at->diffForHumans() }}</td>
                         <td>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Edit"
-                                data-bs-target="#skills-edit-modal"
+                            <button type="button" class="btn" title="Edit"
+                                x-on:click="$dispatch('open-modal', {name: 'skills-edit-modal'})"
                                 wire:click.prevent="setSocialID({{ $skill->id }})">
                                 <i class="fas fa-edit text-primary"></i>
                             </button>
-                            <button type="button" class="btn" data-bs-toggle="modal" title="Delete"
-                                data-bs-target="#deleteModal" wire:click.prevent="setSocialID({{ $skill->id }})">
+                            <button type="button" class="btn" title="Delete"
+                                x-on:click="$dispatch('open-modal', {name: 'skills-del-modal'})"
+                                wire:click.prevent="setSocialID({{ $skill->id }})">
                                 <i class="fas fa-trash text-danger"></i>
                             </button>
                         </td>
@@ -85,9 +87,7 @@
     {{ $skills->links() }}
 
     {{-- Import Adding Modal --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'skills-add-modal' }}</x-slot:id>
-        <x-slot:title>{{ __('Adding new skills') }}</x-slot:title>
+    <x-modal.def name="skills-add-modal" title="Adding new skills">
         <form wire:submit.prevent="save">
             {{-- Skill Name --}}
             <x-forms.input>
@@ -123,9 +123,7 @@
     </x-modal.def>
 
     {{-- Import Editing Modal --}}
-    <x-modal.def>
-        <x-slot:id>{{ 'skills-edit-modal' }}</x-slot:id>
-        <x-slot:title>{{ __('Updating old skills') }}</x-slot:title>
+    <x-modal.def name="skills-edit-modal" title="Editing skills">
         <form wire:submit.prevent="update">
             {{-- Skill ID --}}
             <x-forms.input>
@@ -170,9 +168,12 @@
     </x-modal.def>
 
     {{-- Import Confirming Modal --}}
-    <x-modal.confirm>
+    {{-- <x-modal.confirm>
         <x-slot:method>{{ 'delete' }}</x-slot:method>
-    </x-modal.confirm>
+    </x-modal.confirm> --}}
+    <x-modal.def name="skills-del-modal" title="Confirm Deletion">
+        <x-slot:type>{{ 'confirm' }}</x-slot:type>
+    </x-modal.def>
 
     <script defer>
         
