@@ -45,6 +45,8 @@ class PubInfo extends Component
 
         $this->dispatchingMsgs('Successfully updated personal details');
 
+        $this->dispatch('reload-info');
+
     }
 
     public function render()

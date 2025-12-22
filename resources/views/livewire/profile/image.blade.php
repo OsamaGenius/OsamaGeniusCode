@@ -15,22 +15,15 @@
             <form wire:submit.prevent="update">
 
                 <div class="mb-3 text-center">
-                    <img 
-                        class="card-img-top user_image" 
-                        @if ($image)
+                    <img class="card-img-top user_image"
+                        @if ($image) 
                             src="{{ $image->temporaryUrl() }}" 
                         @else
-                            @if (Auth::guard($guard)->user()->image)
-                                src="{{ asset('/storage/' . Auth::guard($guard)->user()->image) }}" 
-                            @else
-                                src="{{ asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
-                            @endif
-                        @endif
-                        alt="Title"
-                    >
+                            src="{{ asset('/storage/' . $path) }}" @endif
+                        alt="Title">
 
                     <p wire:loading class="mb-2 w-100 text-center text-secondary">loading...</p>
-    
+
                 </div>
 
                 <x-forms.input>

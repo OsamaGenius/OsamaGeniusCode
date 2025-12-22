@@ -15,6 +15,8 @@ class Image extends Component
 
     public $guard;
 
+    public $path;
+
     #[Rule('required|image|max:1024')]
     public $image;
     
@@ -24,19 +26,23 @@ class Image extends Component
     *==========================================
     **/
     public function update() {
-        $validation = $this->validate();
+        $this->validate();
 
         if($this->image) {
-         
-            $validition['image'] = $this->image->store('Profiles', 'public');
-
+            $this->path = $this->image->store('Profiles', 'public');
+        } else {
+            $this->path = Auth::guard('panel')->user()->image;
         }
 
-        User::where('id', Auth::guard('panel')->user()->id)->update($validation);
+        User::where('id', Auth::guard('panel')->user()->id)->update([
+            'image' => $this->path
+        ]);
 
         $this->dispatchingMsgs('Successfully updated your profile image');
 
         $this->resetInputs('image');
+
+        $this->dispatch('reload-image');
     }
 
     /*
@@ -46,6 +52,7 @@ class Image extends Component
     **/
     public function mount($guard) {
         $this->guard = $guard;
+        $this->path = Auth::guard('panel')->user()->image;
         Dispatching::notAdminsAuth();
     }
 
@@ -56,6 +63,11 @@ class Image extends Component
     **/
     public function render()
     {
-        return view('livewire.profile.image');
+        return view(
+            'livewire.profile.image',
+            [
+                'path' => $this->path
+            ]
+        );
     }
 }
