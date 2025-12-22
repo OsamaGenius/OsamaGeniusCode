@@ -56,9 +56,10 @@ class Skills extends Component
     public function setSocialID($id)
     {
         $this->skill_id = $id;
-        $skill = Skill::where('id', $this->skill_id)->get(['name', 'percentage', 'level']);
+        $skill = Skill::where('id', $this->skill_id)->get(['name', 'percentage', 'level', 'type']);
         $this->name = $skill[0]->name;
         $this->level = $skill[0]->level;
+        $this->type = $skill[0]->type;
         $this->percentage = $skill[0]->percentage;
     }
 

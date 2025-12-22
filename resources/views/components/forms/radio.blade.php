@@ -5,7 +5,7 @@
     <h6>{{ $title }}</h6>
     <div class="d-flex">
         @foreach ($radios as $i => $val)
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline" wire:key="{{rand($i, 99)}}">
                 <input class="form-check-input" type="radio" wire:model.defer="{{ $for }}" value="{{ $val }}">
                 <label class="form-check-label">{{ $val }}</label>
             </div>

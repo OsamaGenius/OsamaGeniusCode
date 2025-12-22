@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name', 50);
             $table->integer('percentage', false, true)->default(50);
-            $table->enum('level', ['Beginner', 'Intermediate', 'Expert']);
-            $table->enum('type', ['Frontend', 'Backend']);
+            $table->enum('level', ['Beginner', 'Intermediate', 'Expert'])->default('Intermediate');
+            $table->enum('type', ['Frontend', 'Backend'])->default('Frontend');
             $table->timestamps();
         });
     }
