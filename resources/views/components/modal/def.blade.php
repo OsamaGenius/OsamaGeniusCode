@@ -9,7 +9,6 @@
     x-on:open-modal.window="visible = ($event.detail.name === name)"
     x-on:close-modal.window="visible = false"
     x-on:keydown.escape.window="visible = false"
-    x-transition
 >
 
     <div class="modal-holder" wire:ignore.self>
