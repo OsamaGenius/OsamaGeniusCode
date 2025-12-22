@@ -168,57 +168,61 @@
         <x-slot:type>{{ 'confirm' }}</x-slot:type>
     </x-modal.def>
 
-    <script defer>
-        const
-            pgLab = document.querySelectorAll('.progress-label'),
-            progress = document.querySelectorAll('.progress .progress-bar');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-        function fillProgressBars() {
-            progress.forEach((bar, i) => {
-                let valnow = bar.getAttribute('aria-valuenow'); // Fetch current progress value
-                if (valnow >= 80) {
-                    fillProgressBarAnimation(bar, 'bg-success', valnow); // Animate fills from 0 to current value
-                    setupProgressBarLabel(bar, pgLab[i], 'bg-success'); // Config progress bar label
-                } else if (valnow >= 50) {
-                    fillProgressBarAnimation(bar, 'bg-warning', valnow);
-                    setupProgressBarLabel(bar, pgLab[i], 'bg-warning');
-                    progress[i].style.color = '#333';
-                } else {
-                    fillProgressBarAnimation(bar, 'bg-danger', valnow);
-                    setupProgressBarLabel(bar, pgLab[i], 'bg-danger');
-                }
-                bar.addEventListener('mouseenter', function() { // Show label on hover
-                    pgLab[i].classList.add('op-none');
-                    pgLab[i].classList.add('progress-label-bounce');
+            const
+                pgLab = document.querySelectorAll('.progress-label'),
+                progress = document.querySelectorAll('.progress .progress-bar');
+
+            function fillProgressBars() {
+                progress.forEach((bar, i) => {
+                    let valnow = bar.getAttribute('aria-valuenow'); // Fetch current progress value
+                    if (valnow >= 80) {
+                        fillProgressBarAnimation(bar, 'bg-success',
+                            valnow); // Animate fills from 0 to current value
+                        setupProgressBarLabel(bar, pgLab[i], 'bg-success'); // Config progress bar label
+                    } else if (valnow >= 50) {
+                        fillProgressBarAnimation(bar, 'bg-warning', valnow);
+                        setupProgressBarLabel(bar, pgLab[i], 'bg-warning');
+                        progress[i].style.color = '#333';
+                    } else {
+                        fillProgressBarAnimation(bar, 'bg-danger', valnow);
+                        setupProgressBarLabel(bar, pgLab[i], 'bg-danger');
+                    }
+                    bar.addEventListener('mouseenter', function() { // Show label on hover
+                        pgLab[i].classList.add('op-none');
+                        pgLab[i].classList.add('progress-label-bounce');
+                    });
+                    bar.addEventListener('mouseleave', function() { // hide label on exit
+                        pgLab[i].classList.remove('op-none');
+                        pgLab[i].classList.remove('progress-label-bounce');
+                    });
                 });
-                bar.addEventListener('mouseleave', function() { // hide label on exit
-                    pgLab[i].classList.remove('op-none');
-                    pgLab[i].classList.remove('progress-label-bounce');
-                });
-            });
-        }
-
-
-        function setupProgressBarLabel(value, label, bg = 'bg-primary') {
-            // Move the label to last filled point of the progress bar [like: 90%]
-            label.style.left = value.getAttribute('aria-valuenow') + '%';
-            label.classList.add(bg); // Adding bg color class name to the label
-            if (bg === 'bg-warning') {
-                label.style.color = '#333'; // Set text color to black
-            } else {
-                label.style.color = '#fff'; // Set text color to white
             }
-        }
 
-        function fillProgressBarAnimation(target, bg = 'bg-primary', value = '50') {
-            target.classList.add(bg); // Adding bg class name to the progress bar
-            target.style.width = '0%'; // Set the width of progress bar to zero
-            setTimeout(() => { // Animate: filling the progress bar width accordding to the value 
-                target.style.width = value + '%';
-            }, 700);
-        }
+            function setupProgressBarLabel(value, label, bg = 'bg-primary') {
+                // Move the label to last filled point of the progress bar [like: 90%]
+                label.style.left = value.getAttribute('aria-valuenow') + '%';
+                label.classList.add(bg); // Adding bg color class name to the label
+                if (bg === 'bg-warning') {
+                    label.style.color = '#333'; // Set text color to black
+                } else {
+                    label.style.color = '#fff'; // Set text color to white
+                }
+            }
 
-        fillProgressBars();
+            function fillProgressBarAnimation(target, bg = 'bg-primary', value = '50') {
+                target.classList.add(bg); // Adding bg class name to the progress bar
+                target.style.width = '0%'; // Set the width of progress bar to zero
+                setTimeout(() => { // Animate: filling the progress bar width accordding to the value 
+                    target.style.width = value + '%';
+                }, 700);
+            }
+
+            (fillProgressBars());
+
+        });
     </script>
 
 </div>
