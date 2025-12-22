@@ -84,13 +84,33 @@
                                     <a href="#" class="nav-link"><i class="fas fa-bell"></i></a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId"
+                                    <a class="nav-link dropdown-toggle @if(Route::currentRouteName() === 'panel.profile') active @endif" href="#" id="dropdownId"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-user"></i>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                        <a class="dropdown-item" href="{{route('panel.profile')}}">{{__('Profile')}}</a>
-                                        <a class="dropdown-item" href="{{route('panel.logout')}}">{{__('Logout')}}</a>
+                                    <div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdownId">
+                                        <div class="text-center my-3">
+                                            <img class="img-fluid user_image" src="{{asset('/storage/' . Auth::guard('panel')->user()->image)}}" alt="user_image">
+                                        </div>
+                                        <div class="text-center">
+                                            <h5 class="mb-0">{{ Auth::guard('panel')->user()->name }}</h5>
+                                            <h6>{{ Auth::guard('panel')->user()->email }}</h6>
+                                        </div>
+                                        <hr class="mx-3">
+                                        <div class="d-flex justify-centent-between">
+                                            <div class="col-6 px-2">
+                                                <a class="text-start btn btn-outline-light text-black-500" href="{{route('panel.profile')}}">
+                                                    <i class="fas fa-user-gear"></i>
+                                                    {{__('Profile')}}
+                                                </a>
+                                            </div>
+                                            <div class="col-6 text-end px-2">
+                                                <a class="text-end btn btn-outline-light text-black-500" href="{{route('panel.logout')}}">
+                                                    <i class="fas fa-circle-left"></i>
+                                                    {{__('Logout')}}
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
