@@ -18,6 +18,7 @@
         </button>
     </div>
 
+    {{-- Forms [Add | Update] --}}
     <div class="p-3 rounded-3 bg-white shadow-md mt-2" x-cloak x-show="add" x-transition>
         {{-- Nav tabs --}}
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -68,6 +69,7 @@
         </div>
     </div>
 
+    {{-- Table View --}}
     <div class="p-3 rounded-3 bg-white shadow-md mt-2" x-cloak x-show="show" x-transition>
         <div class="table-responsive">
             <table class="table table-borderless align-middle text-center">
@@ -94,9 +96,13 @@
                                         wire:click.prevent="setPreview({{ $item->id }})">
                                         <i class="fas fa-edit text-primary"></i>
                                     </button>
-                                    <button type="button" class="btn" data-bs-toggle="modal" title="Delete"
+                                    <button 
+                                        type="button" 
+                                        class="btn" 
+                                        data-bs-toggle="modal" 
+                                        title="Delete"
+                                        x-on:click="$dispatch('open-modal', {name: 'story-del-modal'})"
                                         wire:click.prevent="deleteID({{ $item->id }})"
-                                        wire:confirm="Are you sure you want to delete this record"
                                     >
                                         <i class="fas fa-trash text-danger"></i>
                                     </button>
@@ -120,8 +126,8 @@
     </div>
 
     {{-- Confirm Deleting Modal --}}
-    <x-modal.confirm>
-        <x-slot:method>{{ 'delete' }}</x-slot:method>
-    </x-modal.confirm>
+    <x-modal.def name="story-del-modal">
+        <x-slot:type>{{ 'confirm' }}</x-slot:type>
+    </x-modal.def>
 
 </div>

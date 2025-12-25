@@ -20,6 +20,7 @@
         </button>
     </div>
 
+    {{-- Forms [Add | Update] --}}
     <div class="p-3 rounded-3 bg-white shadow-md mt-2" x-cloak x-show="add" x-transition>
         {{-- Nav tabs --}}
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -47,15 +48,21 @@
                 <div class="text-end">
                     {{-- Save new --}}
                     <button class="btn btn-outline-success" x-cloak x-show="status" x-transition wire:click.prevent="save">
-                        <i class="fas fa-file me-1"></i>{{ __('Save') }}
+                        <i wire:loading class="fas fa-spinner fa-spin"></i>
+                        <i class="fas fa-file me-1"></i>
+                        {{ __('Save') }}
                     </button>
                     {{-- Edit --}}
                     <div class="btn-group" x-cloak x-show="!status" x-transition>
                         <button class="btn btn-outline-success" wire:click.prevent="update">
-                            <i class="fas fa-edit me-2"></i>{{ __('Edit') }}
+                            <i wire:loading class="fas fa-spinner fa-spin"></i>
+                            <i class="fas fa-edit me-2"></i>
+                            {{ __('Edit') }}
                         </button>
                         <button class="btn btn-outline-danger" wire:click.prevent="cancel">
-                            <i class="fas fa-times me-2"></i>{{ __('Cancel') }}
+                            <i wire:loading class="fas fa-spinner fa-spin"></i>
+                            <i class="fas fa-times me-2"></i>
+                            {{ __('Cancel') }}
                         </button>
                     </div>
                 </div>
@@ -68,6 +75,7 @@
         </div>
     </div>
 
+    {{-- Table View --}}
     <div class="p-3 rounded-3 bg-white shadow-md mt-2" x-cloak x-show="show" x-transition>
         {{-- <div class="preview" x-html="review"></div>
         <div class="text-end">
@@ -110,7 +118,7 @@
                                             class="btn" 
                                             data-bs-toggle="modal" 
                                             title="Delete"
-                                            data-bs-target="#deleteModal" 
+                                            x-on:click="$dispatch('open-modal', {name: 'about-del-modal'})"
                                             wire:click.prevent="deleteID({{ $item->id }})"
                                         >
                                             <i class="fas fa-trash text-danger"></i>
@@ -137,8 +145,8 @@
     </div>
 
     {{-- Confirm Deleting Modal --}}
-    <x-modal.confirm>
-        <x-slot:method>{{ 'delete' }}</x-slot:method>
-    </x-modal.confirm>
+    <x-modal.def name="about-del-modal">
+        <x-slot:type>{{ 'confirm' }}</x-slot:type>
+    </x-modal.def>
 
 </div>

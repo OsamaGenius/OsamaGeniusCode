@@ -6,11 +6,11 @@
 
     <div class="container py-5">
 
-        @livewire('panel.about.about')
+        @livewire('panel.about.about', key('10'))
 
         <hr class="my-4">
 
-        @livewire('panel.about.story')
+        @livewire('panel.about.story', key('100'))
 
     </div>
 

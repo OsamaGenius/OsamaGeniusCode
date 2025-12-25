@@ -4,6 +4,7 @@ namespace App\Livewire\Panel\About;
 
 use App\Models\Info;
 use App\traits\Dispatching;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -38,7 +39,7 @@ class Story extends Component
         Info::create([
             'title' => $validation['story'],
             'type'  => 'Story',
-            'user_id' => 1,
+            'user_id' => Auth::guard('panel')->user()->id,
         ]);
 
         $this->dispatchingMsgs('Successfully added details');
@@ -105,6 +106,8 @@ class Story extends Component
         $this->dispatchingMsgs('Successfully delete the item');
 
         $this->resetInputs('view_id');
+
+        $this->closeModal('story-del-modal');
     }
 
     /*
