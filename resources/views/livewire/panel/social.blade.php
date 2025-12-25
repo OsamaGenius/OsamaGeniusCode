@@ -79,9 +79,7 @@
             </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">
-                <button type="submit" class="btn btn-outline-primary s-100">
-                    <i class="fas fa-save me-1"></i>{{ __('Save') }}
-                </button>
+                <x-forms.btn></x-forms>
             </div>
         </form>
     </x-modal.def>
@@ -114,12 +112,8 @@
             </x-forms.radio>
             {{-- Submit --}}
             <div class="text-end">
-                <button type="submit" class="btn btn-outline-success s-100">
-                    <i class="fas fa-edit me-1"></i>{{ __('Update') }}
-                </button>
-                <button type="button" wire:click="cancel" class="btn btn-outline-danger s-100">
-                    <i class="fas fa-times me-1"></i>{{ __('Cancel') }}
-                </button>
+                <x-forms.btn title="Update" icon="edit"></x-forms>
+                <x-forms.btn title="Cancel" icon="times"></x-forms>
             </div>
         </form>
     </x-modal.def>

@@ -23,23 +23,21 @@
         <x-slot:tbody>
             @if (count($users) > 0)
                 @foreach ($users as $i => $user)
-                    <tr wire:key="{{$i}}">
-                        <td>{{$i += 1}}</td>
+                    <tr wire:key="{{ $i }}">
+                        <td>{{ $i += 1 }}</td>
                         <td>
-                            <img 
-                                class="d-block s-100 h-100 rounded-4 border-2 border-light shadow-sm" 
-                                src="{{$user->image ? asset('/storage/'.$user->image) : asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png')}}" 
-                                alt="Actor"
-                            >
+                            <img class="d-block s-100 h-100 rounded-4 border-2 border-light shadow-sm"
+                                src="{{ $user->image ? asset('/storage/' . $user->image) : asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}"
+                                alt="Actor">
                         </td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->status}}</td>
-                        <td>{{$user->approvent}}</td>
-                        <td>{{$user->group_id}}</td>
-                        <td>{{$user->bio}}</td>
-                        <td>{{$user->created_at->diffForHumans()}}</td>
-                        <td>{{$user->updated_at->diffForHumans()}}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->status }}</td>
+                        <td>{{ $user->approvent }}</td>
+                        <td>{{ $user->group_id }}</td>
+                        <td>{{ $user->bio }}</td>
+                        <td>{{ $user->created_at->diffForHumans() }}</td>
+                        <td>{{ $user->updated_at->diffForHumans() }}</td>
                         <td>
                             <button type="button" class="btn" title="Edit"
                                 x-on:click="$dispatch('open-modal', {name: 'user-edit-modal'})"
@@ -76,15 +74,11 @@
                 <div class="col">
                     {{-- User Image --}}
                     <div class="text-center mb-3">
-                        <img 
-                            class="user_image mb-3" 
-                            @if ($image)
-                                src="{{ $image->temporaryUrl() }}" 
+                        <img class="user_image mb-3"
+                            @if ($image) src="{{ $image->temporaryUrl() }}" 
                             @else
-                                src="{{ asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
-                            @endif
-                            alt="User_Image"
-                        >
+                                src="{{ asset('imgs/user/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" @endif
+                            alt="User_Image">
                         <div>
                             <span wire:loading class="text-success">loading...</span>
                         </div>
@@ -139,7 +133,8 @@
                                     <i class="fas fa-gear me-1"></i>
                                     {{ __('Generate') }}
                                 </button>
-                                <button class="btn btn-outline-success py-2 mt-2" wire:click.prevent="$dispatch('copy', '{{$password}}')">
+                                <button class="btn btn-outline-success py-2 mt-2"
+                                    wire:click.prevent="$dispatch('copy', '{{ $password }}')">
                                     <i class="fas fa-file me-1"></i>
                                     {{ __('Copy') }}
                                 </button>
@@ -148,9 +143,7 @@
                     </div>
                     {{-- Submit --}}
                     <div class="text-end">
-                        <button type="submit" class="btn btn-outline-primary s-100">
-                            <i class="fas fa-save me-1"></i>{{ __('Save') }}
-                        </button>
+                        <x-forms.btn></x-forms>
                     </div>
                 </div>
             </div>
@@ -171,18 +164,15 @@
                 <div class="col">
                     {{-- User Image --}}
                     <div class="text-center mb-3">
-                        <img 
-                            class="user_image mb-3" 
-                            @if ($image)
-                                src="{{ $image->temporaryUrl() }}" 
+                        <img class="user_image mb-3"
+                            @if ($image) src="{{ $image->temporaryUrl() }}" 
                             @else
                                 @if ($path)
                                     src="{{ asset('/storage/' . $path) }}" 
                                 @else
-                                    src="{{ asset('/storage/Profiles/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" 
-                                @endif
+                                    src="{{ asset('/storage/Profiles/PZjJXeqoCke0EniWupHgWeaW1D8cHpcQqr6j7JdJ.png') }}" @endif
                             @endif
-                            alt="User_Image"
+                        alt="User_Image"
                         >
                         <div>
                             <span wire:loading class="text-success">loading...</span>
@@ -238,7 +228,8 @@
                                     <i class="fas fa-gear me-1"></i>
                                     {{ __('Generate') }}
                                 </button>
-                                <button class="btn btn-outline-success py-2 mt-2" wire:click.prevent="$dispatch('copy', '{{$password}}')">
+                                <button class="btn btn-outline-success py-2 mt-2"
+                                    wire:click.prevent="$dispatch('copy', '{{ $password }}')">
                                     <i class="fas fa-file me-1"></i>
                                     {{ __('Copy') }}
                                 </button>
@@ -247,12 +238,8 @@
                     </div>
                     {{-- Submit --}}
                     <div class="text-end">
-                        <button type="submit" class="btn btn-outline-primary s-100">
-                            <i class="fas fa-save me-1"></i>{{ __('Update') }}
-                        </button>
-                        <button type="button" wire:click.prevent="cancel" class="btn btn-outline-danger s-100">
-                            <i class="fas fa-times me-1"></i>{{ __('Cancel') }}
-                        </button>
+                        <x-forms.btn title="Update" icon="edit"></x-forms>
+                        <x-forms.btn title="Cancel" icon="times"></x-forms>
                     </div>
                 </div>
             </div>

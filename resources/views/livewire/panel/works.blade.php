@@ -196,10 +196,7 @@
                     </x-forms.desc-preview>
                     {{-- Save Action --}}
                     <div class="text-end">
-                        <button class="btn btn-outline-success">
-                            <i class="fas fa-file"></i>
-                            {{ __('Create Project') }}
-                        </button>
+                        <x-forms.btn></x-forms>
                     </div>
                 </div>
             </div>
@@ -308,12 +305,8 @@
                     </x-forms.desc-preview>
                     {{-- Submit --}}
                     <div class="text-end">
-                        <button type="submit" class="btn btn-outline-success s-100">
-                            <i class="fas fa-edit me-1"></i>{{ __('Update') }}
-                        </button>
-                        <button type="button" wire:click="cancel" class="btn btn-outline-danger s-100">
-                            <i class="fas fa-times me-1"></i>{{ __('Cancel') }}
-                        </button>
+                        <x-forms.btn title="Update" icon="edit"></x-forms>
+                        <x-forms.btn title="Cancel" icon="times"></x-forms>
                     </div>
                 </div>
             </div>
