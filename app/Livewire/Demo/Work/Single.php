@@ -13,9 +13,23 @@ class Single extends Component
     // #[Layout('layouts.app')]
     public function render()
     {
+
+        # Getting the selected project data
+        $project = Project::where('id', $this->project_id)->get();
+
+        # Getting similar projects data
+        $projects = Project::where('category', $project[0]->category)
+                            ->where('id', '!=', $project[0]->id)
+                            ->orderby('updated_at', 'DESC')
+                            ->limit(8)
+                            ->get();
+
         return view(
             'livewire.demo.work.single',
-            ['project' => Project::where('id', $this->project_id)->get()]
+            [
+                'project' => $project,
+                'projects' => $projects,
+            ]
         );
     }
 }

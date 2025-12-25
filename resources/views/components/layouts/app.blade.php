@@ -45,8 +45,9 @@
                 $links = [
                     'Home' => 'homepage',
                     'About' => 'about',
-                    'My Works' => 'works',
+                    'My Works' => ['works', 'works.single'],
                 ];
+
             @endphp
 
             {{-- Responsive Links --}}
@@ -55,8 +56,24 @@
                 <ul class="navbar-nav ms-auto">
                     @foreach ($links as $name => $route)
                         <li class="nav-item">
-                            <a href="{{ route($route) }}"
-                                class="nav-link @if (Route::currentRouteName() === $route) active @endif">{{ $name }}</a>
+                            <a 
+                                href="{{ route(is_array($route) ? $route[0] : $route) }}"
+                                class="
+                                    nav-link 
+                                    @if (is_array($route))
+                                        @foreach ($route as $item)
+                                            @if (Route::currentRouteName() === $item) 
+                                                active 
+                                            @endif
+                                        @endforeach
+                                    @else 
+                                        @if (Route::currentRouteName() === $route) 
+                                            active 
+                                        @endif
+                                    @endif
+                                ">
+                                    {{ $name }}
+                                </a>
                         </li>
                     @endforeach
                     @guest

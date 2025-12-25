@@ -37,7 +37,8 @@
 
                             <div class="btn-group">
                                 <input x-cloak x-show="search" x-transition type="search"
-                                    wire:model.live.throttle.100ms="search" class="form-control ms-3 s-400"
+                                    wire:model.live.throttle.100ms="search" class="form-control ms-3"
+                                    style="width: 400px"
                                     placeholder="Search for templates, projects and more">
                                 <i class="fas fa-search pt-2 ms-3" style="cursor: pointer"
                                     x-on:click.prevent="search = !search"></i>
@@ -45,7 +46,13 @@
 
                         </div>
 
-                        <div class="position-absolute bg-white shadow-md rounded-3 p-3 mt-2 search-box" style="width: 500px" x-show="result" x-transition>
+                        <div 
+                            class="position-absolute bg-white shadow-md rounded-3 p-3 mt-2 search-box" 
+                            style="width: 500px"
+                            x-cloak 
+                            x-show="result" 
+                            x-transition
+                        >
 
                             @if ($searchResult)
 
@@ -57,12 +64,12 @@
                                             <div class="d-flex">
                                                 <h5 class="mb-0">
                                                     <a class="text-decoration-none"
-                                                        href="#">{{ $item->title }}</a>
+                                                        href="{{ route('works.single', ['project_id'=>$item->id]) }}">{{ $item->title }}</a>
                                                 </h5>
-                                                <p class="mb-0 text-end flex-grow-1">
+                                                <p class="mb-0 text-end grow">
                                                     {{ $item->price > 0 ? '$' . $item->price : 'Free' }}</p>
                                             </div>
-                                            <p class="mb-3">Project Bio</p>
+                                            <p class="mb-3">{{ $item->bio }}</p>
                                         </div>
 
                                         @if ($i < count($searchResult) - 1)

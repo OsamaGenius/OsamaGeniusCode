@@ -10,7 +10,17 @@
 
                     <div class="card-body p-1 position-relative">
 
-                        <span class="badge bg-danger opacity-80 py-2 position-absolute">{{$project->category}}</span>
+                        @php
+                            if($project->category === 'Template') {
+                                $color = 'danger'; 
+                            } else if($project->category === 'Project') {
+                                $color = 'success'; 
+                            } else {
+                                $color = 'info'; 
+                            }
+                        @endphp
+
+                        <span class="badge bg-{{$color}} bg-opacity-50 text-{{$color}}-emphasis fs-6 py-2 position-absolute shadow-md">{{$project->category}}</span>
 
                         <img 
                             src="{{ 
