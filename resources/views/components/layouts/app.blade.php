@@ -134,8 +134,8 @@
             <h2 class="text-light">Web Developer & Graphic Designer</h2>
 
             <div class="mt-3">
-                <button class="btn btn-outline-light btn-lg s-200 me-3">About Me</button>
-                <button class="btn btn-outline-light btn-lg s-200">My Works</button>
+                <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg s-200 me-3">About Me</a>
+                <a href="{{ route('works') }}" class="btn btn-outline-light btn-lg s-200">My Works</a>
             </div>
 
         </div>
