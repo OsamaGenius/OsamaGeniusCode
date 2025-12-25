@@ -4,7 +4,7 @@
 
         @foreach ($projects as $i => $project)
 
-            <div class="col" wire:key="{{ $i++ }}" data-cate="{{ $project->category }}">
+            <div class="col" wire:key="{{ $project->category . '_' . $i+=1 }}" data-cate="{{ $project->category }}">
 
                 <div class="card border-0 shadow-sm">
 

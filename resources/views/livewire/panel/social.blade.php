@@ -20,7 +20,7 @@
         <x-slot:tbody>
             @if (count($links) > 0)
                 @foreach ($links as $i => $link)
-                    <tr>
+                    <tr wire:key="{{$i}}">
                         <td scope="row">{{ $i += 1 }}</td>
                         <td><img class="s-50" src="{{ asset('imgs/social/' . $link->name . '.png') }}"
                                 alt="{{ $link->name }}"></td>

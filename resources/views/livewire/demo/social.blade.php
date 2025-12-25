@@ -5,8 +5,8 @@
 
                 <div class="row row-cols-6 g-0">
 
-                    @foreach ($links as $link)
-                        <div class="col">
+                    @foreach ($links as $i => $link)
+                        <div class="col" wire:key="{{ 'Link_' . $i += 1 }}">
                             <a href="{{$link->url}}">
                                 <img class="" src="{{ asset('imgs/social/'.$link->name . '.png') }}" alt="{{$link->name}}" />
                             </a>

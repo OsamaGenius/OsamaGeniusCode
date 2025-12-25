@@ -22,7 +22,7 @@
                     <div class="border-3 border-start ps-4 timeline">
 
                         @foreach ($stories as $i => $story)
-                            <div class="position-relative ps-2 py-3 my-0">
+                            <div class="position-relative ps-2 py-3 my-0" wire:key="{{ $i += 1 }}">
 
                                 {{-- Time Line --}}
                                 <div id="circle" class="circle" data-animate="circleShow">

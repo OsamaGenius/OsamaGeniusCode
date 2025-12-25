@@ -33,7 +33,7 @@
         <x-slot:tbody>
             @if (count($works) > 0)
                 @foreach ($works as $i => $work)
-                    <tr>
+                    <tr wire:key="{{$i}}">
                         <td>{{ $i += 1 }}</td>
                         <td>
                             <img class="d-block s-100 rounded-2 border border-light shadow-md"

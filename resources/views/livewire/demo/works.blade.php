@@ -47,7 +47,7 @@
                         </div>
 
                         <div 
-                            class="position-absolute bg-white shadow-md rounded-3 p-3 mt-2 search-box" 
+                            class="position-absolute bg-white border border-2 shadow-lg rounded-3 p-3 mt-2 search-box" 
                             style="width: 500px"
                             x-cloak 
                             x-show="result" 
@@ -60,7 +60,7 @@
 
                                     @foreach ($searchResult as $i => $item)
 
-                                        <div class="text-start mb-0" wire:key="{{$i}}">
+                                        <div class="text-start mb-0" wire:key="{{'Search_' . $i+=1}}">
                                             <div class="d-flex">
                                                 <h5 class="mb-0">
                                                     <a class="text-decoration-none"
@@ -72,7 +72,7 @@
                                             <p class="mb-3">{{ $item->bio }}</p>
                                         </div>
 
-                                        @if ($i < count($searchResult) - 1)
+                                        @if ($i < count($searchResult))
                                             <hr>                                            
                                         @endif
 

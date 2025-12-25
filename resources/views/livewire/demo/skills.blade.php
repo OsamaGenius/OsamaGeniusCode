@@ -23,8 +23,8 @@
                                 Frontend Skills
                             </h4>
 
-                            @foreach ($fLinks as $link)
-                                <div class="position-relative">
+                            @foreach ($fLinks as $i => $link)
+                                <div class="position-relative" wire:key="{{ 'Front_' . $i += 1 }}">
                                     <label class="progress-label">{{ $link->percentage }}</label>
                                     <div class="progress mb-3">
                                         <div class="progress-bar" role="progressbar"
@@ -49,7 +49,7 @@
                             </h4>
 
                             @foreach ($bLinks as $link)
-                                <div class="position-relative">
+                                <div class="position-relative" wire:key="{{ 'Back_' . $i += 1 }}">
                                     <label class="progress-label">{{ $link->percentage }}</label>
                                     <div class="progress mb-3">
                                         <div class="progress-bar" role="progressbar"

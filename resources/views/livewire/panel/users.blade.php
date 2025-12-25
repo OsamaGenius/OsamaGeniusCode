@@ -23,7 +23,7 @@
         <x-slot:tbody>
             @if (count($users) > 0)
                 @foreach ($users as $i => $user)
-                    <tr wire:key="{{$user->id}}">
+                    <tr wire:key="{{$i}}">
                         <td>{{$i += 1}}</td>
                         <td>
                             <img 

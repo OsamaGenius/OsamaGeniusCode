@@ -80,6 +80,7 @@
                 <div class="d-flex mt-3">
                     @foreach ($result as $i => $item)
                         <span
+                            wire:key="{{ $color . '_' . $i +=1 }}"
                             class="
                                 py-1 
                                 px-3 
