@@ -73,3 +73,51 @@ routes/
 ├── web.php
 └── panel.php
 ```
+
+## 🚀 Installation
+
+### 1️⃣ Clone the repo
+```
+git clone https://github.com/OsamaGenius/OsamaGeniusCode
+cd OsamaGeniusCode 
+```
+### 2️⃣ Install PHP Dependencies 
+```
+composer install 
+```
+### 3️⃣ Install Node Dependencies 
+```
+npm install 
+```
+### 4️⃣ Configure Environment 
+```
+cp .env.example .env
+php artisan key:generate
+```
+Update your database credentials inside:
+```
+DB_DATABASE=
+DB_USERNAME=root
+DB_PASSWORD=
+```
+### 5️⃣ Run Migration 
+```
+php artisan migrate
+```
+### 6️⃣ Start Development Server
+```
+composer run dev 
+```
+or manually:
+```
+php artisan serve
+---
+npm run dev
+```
+
+
+
+
+
+
+
