@@ -47,3 +47,29 @@ This project combines a professional public portfolio website with a custom admi
 | Char.js     | Dashboard Charts            |
 | MySQL       | Database Management         |
 | PHP         | Server Communication        |
+
+## 📁 Project Structure
+
+```bash
+app/
+├── Http/
+│   ├── Controllers/
+│   └── Middleware/
+│
+├── Models/
+│
+├── Livewire/
+│   ├── Auth/
+│   ├── Panel/
+│   └── Profile/
+│
+resources/
+├── views/
+│   ├── layouts/
+│   ├── panel/
+│   └── auth/
+│
+routes/
+├── web.php
+└── panel.php
+```
