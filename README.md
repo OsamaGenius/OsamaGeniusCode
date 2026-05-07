@@ -38,7 +38,7 @@ This project combines a professional public portfolio website with a custom admi
 ## 🧱 Tech Stack
 
 | Technology  | propuse                     |
-| :---        |     :---:                   |
+| :---        | :---                        |
 | Laravel 12  | Backend Framework           |
 | Livewire 3  | Dynamic Frontend Components |
 | Bootstrap 5 | UI Framework                |
