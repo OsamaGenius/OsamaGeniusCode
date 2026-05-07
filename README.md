@@ -14,3 +14,23 @@ This project combines a professional public portfolio website with a custom admi
 - Social media integration. 
 - Contact & interaction support. 
 - Authentication pages (Login / Register). 
+### 🛠️ Admin Dashboard
+- Secure admin authentication system.
+- Dashboard analytics overview.
+- User management.
+- Projects management.
+- Skills management.
+- Social links management.
+- Profile settings management.
+- Password update functionality.
+- Profile image management.
+### ⚡ Technical Features
+- Built with Laravel 12. 
+- Livewire powered dynamic components. 
+- Vite asset bundling. 
+- Bootstrap 5 UI system. 
+- SCSS support. 
+- Chart.js integration. 
+- Middleware-based route protection. 
+- Clean MVC architecture. 
+- Component-based development structure. 
