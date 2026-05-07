@@ -1,11 +1,16 @@
-# OsamaGenius
+# Osama Genius Portfolio System
 
+A modern full-stack portfolio and portfolio management system built with Laravel 12, Livewire 3, Bootstrap 5, and Vite.
 
-## Requirements:
-- PHP version ^8.2
-- Npm Install
-- chart.js ^4.5.1
-- Livewire version ^3.6
-- Laravel/ui version ^4.6
-- League/commonmark version ^2.7
-- Ui Bootstrap
+This project combines a professional public portfolio website with a custom admin dashboard that allows complete management of projects, skills, socials, user accounts, and profile information.
+
+## ✨ Features
+### 🌐 Public Portfolio Website
+- Modern responsive portfolio interface. 
+- Dynamic projects/work showcase. 
+- Single project details page. 
+- About section. 
+- Skills presentation. 
+- Social media integration. 
+- Contact & interaction support. 
+- Authentication pages (Login / Register). 
