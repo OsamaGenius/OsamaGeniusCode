@@ -96,7 +96,7 @@ php artisan key:generate
 ```
 Update your database credentials inside:
 ```
-DB_DATABASE=
+DB_DATABASE=GeniusDB
 DB_USERNAME=root
 DB_PASSWORD=
 ```
