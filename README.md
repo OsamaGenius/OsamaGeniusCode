@@ -33,4 +33,17 @@ This project combines a professional public portfolio website with a custom admi
 - Chart.js integration. 
 - Middleware-based route protection. 
 - Clean MVC architecture. 
-- Component-based development structure. 
+- Component-based development structure.
+  
+## 🧱 Tech Stack
+
+| Technology  | propuse                     |
+| :---        |     :---:                   |
+| Laravel 12  | Backend Framework           |
+| Livewire 3  | Dynamic Frontend Components |
+| Bootstrap 5 | UI Framework                |
+| Vite        | Asset Bundler               |
+| SCSS        | Styling Site                |
+| Char.js     | Dashboard Charts            |
+| MySQL       | Database Management         |
+| PHP         | Server Communication        |
