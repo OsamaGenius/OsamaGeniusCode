@@ -159,7 +159,21 @@ This project was designed as a complete portfolio management solution that demon
 <img width="1353" height="638" alt="Screenshot (9)" src="https://github.com/user-attachments/assets/77a1dfcd-c92b-45b5-8559-88acaa8dfaf3" />
 
 #### User Management Page
-<img width="1348" height="633" alt="Screenshot (10)" src="https://github.com/user-attachments/assets/c0710efc-5d5e-4e3a-9a11-8c95e480adfb" />
+<img width="1345" height="639" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/23e7b963-7367-4d09-b271-cd8e0b000c4b" />
+
+#### Public Details Page
+<img width="1349" height="640" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/66c07843-eea3-4861-9ffd-c339a01bce74" />
+
+#### Galary Management Page
+<img width="1351" height="639" alt="Screenshot (12)" src="https://github.com/user-attachments/assets/862ade84-be1d-4b06-a6ff-4fb7a101c30c" /> 
+
+#### Skills & Socail Links Management
+<img width="1350" height="635" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/087c2cdc-aa92-44b7-9a0b-9c8dbe315c1c" />
+
+<img width="1349" height="645" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/a6fef818-f995-4e90-8066-ea3e22c7fd78" />
+
+#### Profile Page Management
+<img width="1353" height="643" alt="Screenshot (17)" src="https://github.com/user-attachments/assets/032f4f24-d649-4df5-a41f-0c17f35f385c" />
 
 
 ## 🛣️ Future Improvements 
