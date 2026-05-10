@@ -175,6 +175,17 @@ This project was designed as a complete portfolio management solution that demon
 #### Profile Page Management
 <img width="1353" height="643" alt="Screenshot (17)" src="https://github.com/user-attachments/assets/032f4f24-d649-4df5-a41f-0c17f35f385c" />
 
+### Public view
+
+#### Home Page
+<img width="1349" height="636" alt="Screenshot (19)" src="https://github.com/user-attachments/assets/b6534e99-0b28-48eb-ab48-d176dc59cfde" />
+
+#### Galary Page
+<img width="1350" height="633" alt="Screenshot (18)" src="https://github.com/user-attachments/assets/5a015912-e6f2-40ad-a658-100ab722bcae" />
+
+### Single Galary View
+<img width="1349" height="633" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/65ca8827-e9e5-4928-851a-c545b67218ff" />
+
 
 ## 🛣️ Future Improvements 
 
