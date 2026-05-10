@@ -155,6 +155,12 @@ This project was designed as a complete portfolio management solution that demon
 #### Login Page
 <img width="1366" height="636" alt="Screenshot (8)" src="https://github.com/user-attachments/assets/157fd3e8-900c-444a-b6ad-73895cdd062d" />
 
+#### Dashboard Page
+<img width="1353" height="638" alt="Screenshot (9)" src="https://github.com/user-attachments/assets/77a1dfcd-c92b-45b5-8559-88acaa8dfaf3" />
+
+#### User Management Page
+<img width="1348" height="633" alt="Screenshot (10)" src="https://github.com/user-attachments/assets/c0710efc-5d5e-4e3a-9a11-8c95e480adfb" />
+
 
 ## 🛣️ Future Improvements 
 
