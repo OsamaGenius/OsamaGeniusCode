@@ -150,6 +150,12 @@ This project was designed as a complete portfolio management solution that demon
 
 ## 📸 Screenshots
 
+### Control Panel
+
+#### Login Page
+<img width="1366" height="636" alt="Screenshot (8)" src="https://github.com/user-attachments/assets/157fd3e8-900c-444a-b6ad-73895cdd062d" />
+
+
 ## 🛣️ Future Improvements 
 
 Planned improvements for upcoming versions:
