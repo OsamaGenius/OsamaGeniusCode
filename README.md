@@ -175,10 +175,15 @@ This project is open-source and available under the MIT License.
 
 ## 👨‍💻 Author
 
-#### Osama Abdelrahman 
+**Osama Abdelrahman**
 
 Full-Stack Web Developer focused on Laravel, Livewire, and modern web technologies.
 
 Github Profile: [Github Page](https://www.linkedin.com/in/osama-abdelrahman-ab539930a).
 
 LinkedIn Profile: [LinkedIn Page](https://www.linkedin.com/in/osama-abdelrahman-ab539930a).
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
+
