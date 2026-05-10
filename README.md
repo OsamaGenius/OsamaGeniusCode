@@ -163,5 +163,22 @@ Planned improvements for upcoming versions:
 - Media upload manager. 
 - Project categories & tags. 
 
+## 🤝 Contributing
 
+Contributions, ideas, and improvements are always welcome.
 
+Feel free to fork the project and submit pull requests.
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+## 👨‍💻 Author
+
+#### Osama Abdelrahman 
+
+Full-Stack Web Developer focused on Laravel, Livewire, and modern web technologies.
+
+Github Profile: [Github Page](https://www.linkedin.com/in/osama-abdelrahman-ab539930a).
+
+LinkedIn Profile: [LinkedIn Page](https://www.linkedin.com/in/osama-abdelrahman-ab539930a).
