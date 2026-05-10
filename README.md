@@ -115,9 +115,26 @@ php artisan serve
 npm run dev
 ```
 
+## 🔐 Authentication & Security 
 
+The project includes:
 
+- Admin authentication system. 
+- Route middleware protection. 
+- Session-based authentication. 
+- Custom panel authentication middleware.
+- Protected Dashboard routes.
 
+## 📊 Dashboard Modules
+
+The admin panel currently includes:
+
+- Users Management. 
+- Works / Projects Management. 
+- Skills Management. 
+- Social Links Management. 
+- Profile Settings. 
+- Analytics Charts. 
 
 
 
