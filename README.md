@@ -186,6 +186,15 @@ This project was designed as a complete portfolio management solution that demon
 ### Single Galary View
 <img width="1349" height="633" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/65ca8827-e9e5-4928-851a-c545b67218ff" />
 
+#### About Page
+<img width="1345" height="631" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/c1d5bd06-24c4-42c6-a876-a6afcc0f30a3" />
+
+#### Login Page
+<img width="1349" height="633" alt="Screenshot (22)" src="https://github.com/user-attachments/assets/9a44a0b7-9437-4b26-9367-6cc2aedf063f" />
+
+#### Registration Page
+<img width="1350" height="633" alt="Screenshot (23)" src="https://github.com/user-attachments/assets/e1bffc7d-009c-4797-8cc3-d7a84fcfb598" />
+
 
 ## 🛣️ Future Improvements 
 
