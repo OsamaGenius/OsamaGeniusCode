@@ -146,7 +146,9 @@ This project was designed as a complete portfolio management solution that demon
 - Authentication systems. 
 - Dynamic UI rendering. 
 - Clean project Organization. 
-- Scalable application structure. 
+- Scalable application structure.
+
+## 📸 Screenshots
 
 ## 🛣️ Future Improvements 
 
